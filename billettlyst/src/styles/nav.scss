@@ -1,0 +1,42 @@
+nav {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+
+    ul {
+        display: none;
+    }
+
+    #logo {
+        font-size: 35px;
+        text-decoration: none;
+    }
+}
+
+@media (min-width: 1024px) {
+    nav {
+        height: 100px;
+
+        ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            height: 100%;
+    
+            li {
+                height: 100%;
+    
+                a {
+                    display: flex;
+                    align-items: center;
+                    text-decoration: none;
+                    padding: 0 20px;
+                    height: 100%;
+                }
+            }
+        }
+    }
+}

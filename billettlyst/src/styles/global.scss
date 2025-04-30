@@ -1,0 +1,33 @@
+/*
+
+Dette er et globalt stilark og fungerer som en standard på nettsiden.
+
+Vi benytter dette som en mal som kan overskrives ved behov. Dette gjelder:
+    generelle HTML-elementer,
+    marginer,
+    padding,
+    størrelsesforhold,
+    og farger
+
+Overskrivelser skal gjøres i komponentets egne stilark.
+
+*/
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .grid {
+      grid-template-columns: repeat(12, 1fr);
+    }
+}
