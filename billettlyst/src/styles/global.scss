@@ -26,6 +26,14 @@ Overskrivelser skal gjøres i komponentets egne stilark.
     gap: 1rem;
 }
 
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
 @media (min-width: 768px) {
     .grid {
       grid-template-columns: repeat(12, 1fr);

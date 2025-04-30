@@ -12,6 +12,7 @@ export default function Nav() {
                 <li><Link to="#">Sport</Link></li>
                 <li><Link to="#">Teater</Link></li>
             </ul>
+            <Link to="/dashboard">Logg inn</Link>
         </nav>
     )
 }
