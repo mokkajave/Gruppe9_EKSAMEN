@@ -1,14 +1,25 @@
 header {
     position: sticky;
     top: 0;
-    padding: 0 1rem;
-    background-color: #fff;
-    border-bottom: 1px solid #e3e3e3;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--light-gray);
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
 }
 
+main {
+    height: 100vh;
+    background-color: var(--white);
+}
+
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    background-color: var(--white);
+    border-top: 1px solid var(--light-gray);
+}
+
 @media (min-width: 1024px) {
-    header {
-        padding: 0 5rem;
+    footer {
+        height: 100px;
     }
 }
