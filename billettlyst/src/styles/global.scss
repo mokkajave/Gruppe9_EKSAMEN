@@ -54,6 +54,10 @@ body {
     width: 100%;
 }
 
+section {
+    padding-top: 3rem;
+}
+
 ul {
     list-style: none;
 }
@@ -64,7 +68,18 @@ a {
 
 h1, h2, h3 {
     font-family: 'Roboto', sans-serif;
+}
 
+h1 {
+    font-size: 40px;
+}
+
+h2 {
+    font-size: 32px;
+}
+
+h3 {
+    font-size: 24px;
 }
 
 p {

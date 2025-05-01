@@ -1,3 +1,7 @@
 export default function EventPage() {
-    return <h1>Event Page</h1>
+    return (
+        <section>
+            <h1>Event</h1>
+        </section>
+    )
 }
