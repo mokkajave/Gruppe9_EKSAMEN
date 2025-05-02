@@ -5,7 +5,7 @@ nav {
     height: 60px;
     margin: 0 auto;
     padding: 0 1rem;
-    max-width: 1400px;
+    max-width: 1300px;
 
     ul {
         display: none;
@@ -60,13 +60,14 @@ nav {
 
 @media (min-width: 768px) {
     nav {
-        padding: 0 2rem;
+        padding: 0 1.5rem;
     }
 }
 
 @media (min-width: 1024px) {
     nav {
         height: 100px;
+        padding: 0 2rem;
 
         ul {
             display: flex;
