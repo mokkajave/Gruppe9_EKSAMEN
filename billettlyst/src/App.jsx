@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router-dom'
 
 import Layout from './components/Layout'
-import Home from './components/Home'
-import EventPage from './components/EventPage'
-import CategoryPage from './components/CategoryPage'
-import Dashboard from './components/Dashboard'
+import Home from './pages/Home'
+import EventPage from './pages/EventPage'
+import CategoryPage from './pages/CategoryPage'
+import Dashboard from './pages/Dashboard'
 
 import './styles/global.scss'
 

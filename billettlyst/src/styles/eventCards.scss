@@ -1,0 +1,17 @@
+.event-cards-section {
+    gap: 1rem;
+    margin: 0 auto;
+    max-width: 1400px;
+}
+
+@media (min-width: 768px) {
+    .event-cards-section {
+        gap: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .event-cards-section {
+        gap: 2rem;
+    }
+}

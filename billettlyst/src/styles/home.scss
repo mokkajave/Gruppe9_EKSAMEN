@@ -1,0 +1,23 @@
+.hero-section {
+    background-color: var(--off-white-2);
+    height: 300px;
+    padding: 0;
+}
+
+.featured-events-section {
+    border-top: solid 1px var(--light-gray);
+    padding: 3rem 0;
+    margin-top: 3rem;
+}
+
+@media (min-width: 768px) {
+    .hero-section {
+        height: 400px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero-section {
+        height: 500px;
+    }
+}
