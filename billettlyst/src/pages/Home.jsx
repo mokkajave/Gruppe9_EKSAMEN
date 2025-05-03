@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import EventCards from "../components/EventCards";
 
 import "../styles/home.scss";
@@ -6,17 +7,17 @@ import "../styles/home.scss";
 export default function Home() {
     const [featuredEvents, setFeaturedEvents] = useState([]);
 
-    const ids = "K8vZ917K7fV,K8vZ917_YJf,K8vZ917bJC7,K8vZ917oWOV"
+    const featuredEventsIds = "Z698xZb_Z16v7eGkFy,Z698xZb_Z17qfaA,Z698xZb_Z17q33_,Z698xZb_Z16vfkqIjU"
 
-    const getFeaturedEvents = async(id) => {
-        fetch(`https://app.ticketmaster.com/discovery/v2/attractions.json?id=${id}&countryCode=NO&apikey=nwV2iLAvNoKVuQiXYNyXE1lHAr9P850o`)
+    const getFeaturedEvents = async(eventIds) => {
+        fetch(`https://app.ticketmaster.com/discovery/v2/events.json?id=${eventIds}&locale=NO&apikey=nwV2iLAvNoKVuQiXYNyXE1lHAr9P850o`)
             .then(response => response.json())
-            .then(data => setFeaturedEvents(data._embedded?.attractions))
-            .catch(error => console.error("Something went wrong fetching", error));
+            .then(data => setFeaturedEvents(data._embedded?.events))
+            .catch(error => console.error("Something went wrong fetching events:", error))
     };
 
     useEffect(() => {
-        getFeaturedEvents(ids);
+        getFeaturedEvents(featuredEventsIds)
     }, []);
 
     return (
@@ -28,7 +29,7 @@ export default function Home() {
             <EventCards events={featuredEvents} />
 
             <section className="featured-events-section">
-                <h2>Arrangementer i Oslo</h2>
+                <h2>Arrangementer i (By)</h2>
 
                 <EventCards />
             </section>
