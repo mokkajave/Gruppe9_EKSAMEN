@@ -3,11 +3,12 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    line-height: 1;
 
     &:hover {
         .event-card-link {
             img {
-                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2)
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3)
             }
         }
     }
@@ -21,10 +22,18 @@
         img {
             border-radius: 3px;
             max-width: 100%;
-            height: 200px;
+            height: 100%;
             object-fit: cover;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             transition: box-shadow 0.3s ease;
+        }
+
+        h3, p {
+            padding-left: .5rem;
+        }
+
+        p {
+            color: var(--gray);
         }
     }
 }
@@ -32,23 +41,9 @@
 @media (min-width: 768px) {
     .event-card {
         grid-column: span 6;
-
-        .event-card-link {
-            img {
-                height: 250px;
-            }
-        }
     }
 }
 
 @media (min-width: 1024px) {
-    .event-card {
-        
-
-        .event-card-link {
-            img {
-                height: 300px;
-            }
-        }
-    }
+    
 }
