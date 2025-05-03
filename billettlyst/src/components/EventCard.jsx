@@ -6,8 +6,8 @@ export default function EventCard({event}) {
     return (
         <article className="event-card">
             <Link to={`/event/${event.id}`} className="event-card-link">
-                <img src={event.images?.[1]?.url} alt="event-image" />
-                <h3>{event.name}</h3>
+                <img src={event.images?.[0]?.url} alt="event-image" />
+                <h3>{event._embedded?.attractions[0]?.name}</h3>
             </Link>
         </article>
     )
