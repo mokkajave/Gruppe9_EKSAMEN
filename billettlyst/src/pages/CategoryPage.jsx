@@ -14,7 +14,7 @@ export default function CategoryPage() {
     const backgroundImage = backgroundImages[slug];
 
     return (
-        <section className="category-hero">
+        <section className="category-hero-section">
             <h1>{slug.charAt(0).toUpperCase() + slug.slice(1)}</h1>
         </section>
     )

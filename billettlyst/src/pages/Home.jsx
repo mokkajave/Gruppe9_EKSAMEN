@@ -7,6 +7,8 @@ import "../styles/home.scss";
 export default function Home() {
     // useState-hook som tar imot og holder på arrangement(er)
     const [featuredEvents, setFeaturedEvents] = useState([]);
+    // useState-hook som tar imot og holder på arrangementer i en spesifikk by
+    const [city, setCity] = useState([]);
 
     // En variabel som inneholder ID-er for fremhevede arrangementer
     const featuredEventsIds = "Z698xZb_Z16v7eGkFy,Z698xZb_Z17qfaA,Z698xZb_Z17q33_,Z698xZb_Z16vfkqIjU"
@@ -35,11 +37,11 @@ export default function Home() {
             <section className="hero-section">
                 
             </section>
-            
+
             {/* Sender med state (featuredEvents) som prop */}
             <EventCards events={featuredEvents} />
 
-            <section className="featured-events-section">
+            <section className="city-events-section">
                 <h2>Arrangementer i (By)</h2>
 
                 <EventCards />
