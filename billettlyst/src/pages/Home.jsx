@@ -7,11 +7,12 @@ import "../styles/home.scss";
 export default function Home() {
     // useState-hook som tar imot og holder på arrangement(er)
     const [featuredEvents, setFeaturedEvents] = useState([]);
+    
     // useState-hook som tar imot og holder på arrangementer i en spesifikk by
     const [city, setCity] = useState([]);
 
     // En variabel som inneholder ID-er for fremhevede arrangementer
-    const featuredEventsIds = "Z698xZb_Z16v7eGkFy,Z698xZb_Z17qfaA,Z698xZb_Z17q33_,Z698xZb_Z16vfkqIjU"
+    const featuredIds = "K8vZ917_YJf,K8vZ917K7fV,K8vZ917oWOV,K8vZ917bJC7";
 
     /* 
         - Funksjon som henter arrangementer fra Ticketmaster sin API basert på ID
@@ -19,17 +20,17 @@ export default function Home() {
         - Henter arrangementer i JSON-format ved hjelp av et kall
         - Plasserer hentede arrangementer i state (featuredEvents)
     */
-    const getFeaturedEvents = async(eventIds) => {
-        fetch(`https://app.ticketmaster.com/discovery/v2/events.json?id=${eventIds}&locale=NO&apikey=nwV2iLAvNoKVuQiXYNyXE1lHAr9P850o`)
+    const getFeaturedEvents = async(attractionIds) => {
+        fetch(`https://app.ticketmaster.com/discovery/v2/attractions.json?id=${attractionIds}&locale=NO&apikey=nwV2iLAvNoKVuQiXYNyXE1lHAr9P850o`)
             .then(response => response.json())
-            .then(data => setFeaturedEvents(data._embedded?.events))
+            .then(data => setFeaturedEvents(data._embedded?.attractions))
             .catch(error => console.error("Something went wrong fetching events:", error))
     };
 
     // Funksjonen kjøres når komponentet mountes (rendres)
     useEffect(() => {
         // Benytter "featuredEventsIds" som parameter
-        getFeaturedEvents(featuredEventsIds)
+        getFeaturedEvents(featuredIds)
     }, []);
 
     return (
