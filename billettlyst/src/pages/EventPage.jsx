@@ -4,11 +4,16 @@ import { useParams } from "react-router-dom";
 import "../styles/eventPage.scss";
 
 export default function EventPage() {
-    const {id} = useParams();
-    const [event, setEvent] = useState(null);
+    const {slug} = useParams();
+    const [event, setEvent] = useState([]);
+
+    const formattedKeyword = (slug) => {
+        return slug.replace(/-/g, " ");
+    }
 
     const getEvent = async() => {
-        fetch(`https://app.ticketmaster.com/discovery/v2/events/${id}.json?&locale=NO&apikey=nwV2iLAvNoKVuQiXYNyXE1lHAr9P850o`)
+        const keyword = formattedKeyword(slug);
+        fetch(`https://app.ticketmaster.com/discovery/v2/events.json?keyword=${keyword}&locale=NO&apikey=nwV2iLAvNoKVuQiXYNyXE1lHAr9P850o`)
             .then(response => response.json())
             .then(data => setEvent(data))
             .catch(error => console.error("Something went wrong fetching event:", error))
@@ -16,13 +21,13 @@ export default function EventPage() {
 
     useEffect(() => {
         getEvent();
-    }, [id]);
+    }, []);
 
     return (
         <section className="event-details-section grid">
-            <img src={event?.images?.[0]?.url} alt="event-image" />
+            <img src={event._embedded?.events[0]?.images[0]?.url} />
             <article>
-                <h1>{event?._embedded?.attractions[0]?.name}</h1>
+                <h1>{event._embedded?.events[0]?._embedded?.attractions[0]?.name}</h1>
             </article>
         </section>
     )
