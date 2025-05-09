@@ -2,22 +2,35 @@ import { Link } from "react-router-dom";
 
 import "../styles/eventCard.scss";
 
-export default function EventCard({event}) {
+export default function EventCard({event, isFeatured = false}) {
 
     const slugify = (string) => {
         return string
             .toLowerCase()
             .replace(/\s+/g, '-') // Ersatter mellomrom med bindestrek
-            .replace(/[^\w\-]+/g, ''); // Fjerner alt som ikke er bokstaver
+            .replace(/[^\w\-]+/g, '') // Fjerner alt som ikke er bokstaver
     };
 
     return (
         // Henter ut relevant arrangement-informasjon
         <article className="event-card">
-            <Link to={`/event/${slugify(event.name)}`} className="event-card-link">
-                <img src={event.images[0]?.url} alt="event-image" />
-                <h3>{event.name}</h3>
-            </Link>
+            {isFeatured ? (
+                <Link to={`/event/${slugify(event.name)}`} className="event-card-link">
+                    <img src={event.images[3]?.url} alt="event-image" />
+                    <p>Festival &bull; {event.classifications[0]?.segment?.name}</p>
+                    <h3>{event.name}</h3>
+                </Link>
+            ) : (
+                <div className="event-card-container">
+                    <img src={event.images[3]?.url} alt="event-image" />
+                    <p>
+                        {event._embedded?.venues[0]?.country?.name} &bull; {event._embedded?.venues[0]?.city?.name} &bull; {new Date(event.dates?.start?.localDate).toLocaleDateString("no-NO")}
+                    </p>
+                    <h3>{event.name}</h3>
+                    <button className="event-button">Legg til</button>
+                </div>
+            )}
         </article>
+        
     )
 }

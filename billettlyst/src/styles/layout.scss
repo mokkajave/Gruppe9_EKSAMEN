@@ -4,6 +4,7 @@ header {
     background-color: var(--white);
     border-bottom: 1px solid var(--light-gray);
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
+    z-index: 1000;
 }
 
 main {

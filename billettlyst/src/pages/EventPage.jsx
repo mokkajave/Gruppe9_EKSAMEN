@@ -13,6 +13,7 @@ export default function EventPage() {
 
     const getEvent = async() => {
         const keyword = formattedKeyword(slug);
+
         fetch(`https://app.ticketmaster.com/discovery/v2/events.json?keyword=${keyword}&locale=NO&apikey=nwV2iLAvNoKVuQiXYNyXE1lHAr9P850o`)
             .then(response => response.json())
             .then(data => setEvent(data))

@@ -2,7 +2,7 @@ import EventCard from "./EventCard";
 
 import "../styles/eventCards.scss";
 
-export default function EventCards({events}) {
+export default function EventCards({events, isFeatured}) {
     return (
         <section className="event-cards-section grid">
             {/*
@@ -10,7 +10,7 @@ export default function EventCards({events}) {
                 og sender hvert enkelt arrangement videre til EventCard-komponentet
             */}
             {events?.map(event => (
-                <EventCard key={event.id} event={event} />
+                <EventCard key={event.id} event={event} isFeatured={isFeatured} />
             ))}
         </section>
     )
