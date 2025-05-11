@@ -28,8 +28,10 @@
         }
     }
 
-    .artist-cards-section {
-        gap: 1.5rem;
+    .artist-section {
+        .artist-cards-section {
+            gap: 1.5rem;
+        }
     }
 }
 
@@ -41,7 +43,9 @@
         }
     }
 
-    .artist-cards-section {
-        gap: 2rem;
+    .artist-section {
+        .artist-cards-section {
+            gap: 2rem;
+        }
     }
 }
