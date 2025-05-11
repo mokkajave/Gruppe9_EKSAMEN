@@ -10,6 +10,15 @@
     }
 }
 
+.artist-section {
+    padding: 0;
+    border-top: solid 1.5px var(--light-gray);
+
+    .artist-cards-section {
+        gap: 2rem;
+    }
+}
+
 @media (min-width: 768px) {
     .event-details-section {
 
@@ -17,6 +26,10 @@
             flex-direction: column;
             padding-left: 1.5rem;
         }
+    }
+
+    .artist-cards-section {
+        gap: 1.5rem;
     }
 }
 
@@ -26,5 +39,9 @@
         article {
             padding-left: 2rem;
         }
+    }
+
+    .artist-cards-section {
+        gap: 2rem;
     }
 }

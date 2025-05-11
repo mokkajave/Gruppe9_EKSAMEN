@@ -16,7 +16,7 @@ export default function EventCard({event, isFeatured = false}) {
         <article className="event-card">
             {isFeatured ? (
                 <Link to={`/event/${slugify(event?.name)}`} className="event-card-link">
-                    <img src={event?.images[3]?.url} alt="event-image" />
+                    <img src={event?.images[5]?.url} alt="event-image" />
                     <p>Festival &bull; {event?.classifications[0]?.segment?.name}</p>
                     <h3>{event?.name}</h3>
                 </Link>

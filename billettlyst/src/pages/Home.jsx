@@ -18,6 +18,12 @@ export default function Home() {
     // En variabel som inneholder ID-er for utvalgte arrangementer
     const featuredIds = "K8vZ917_YJf,K8vZ917K7fV,K8vZ917oWOV,K8vZ917bJC7";
 
+    const sortEventsByDate = (events) => {
+        return events?.sort((a, b) => 
+            new Date(b.dates.start.dateTime) - new Date(a.dates.start.dateTime)
+        );
+    };
+
     /* 
         - Funksjon som henter attraksjoner fra Ticketmaster sin API basert på ID
         - Funksjonen tar imot én parameter (eventIds) - arrangement-ID-er

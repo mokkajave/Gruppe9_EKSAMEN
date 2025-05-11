@@ -5,6 +5,7 @@ import "../styles/eventPage.scss";
 import EventCards from "../components/EventCards";
 import EventCard from "../components/EventCard";
 import Heading from "../components/Heading";
+import ArtistCard from "../components/ArtistCard";
 
 export default function EventPage() {
     const {slug} = useParams();
@@ -46,6 +47,15 @@ export default function EventPage() {
             <section className="events-section">
                 <Heading variant="h2">Festivalpass</Heading>
                 <EventCards events={event?._embedded?.events} />
+            </section>
+
+            <section className="artist-section">
+                <Heading variant="h2">Artister</Heading>
+                <section className="artist-cards-section content-container grid">
+                    {event?._embedded?.events[0]?._embedded?.attractions?.map(artist => (
+                        <ArtistCard key={artist.id} artist={artist}/>
+                    ))}
+                </section>
             </section>
         </>
     )
