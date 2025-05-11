@@ -4,7 +4,7 @@ import "../styles/nav.scss";
 
 export default function Nav() {
     return (
-        <nav>
+        <nav className="content-container">
             <Link to="/" id="logo">BillettLyst</Link>
             <ul>
                 <li><Link to="/" className="nav-link">Hjem</Link></li>

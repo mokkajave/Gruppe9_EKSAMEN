@@ -1,36 +1,30 @@
 .event-details-section {
-    max-width: 1200px;
-    margin: 0 auto;
     width: 100%;
     gap: 1rem;
-
-    img {
-        grid-column: 1 / -1;
-        max-width: 100%;
-        border-radius: 3px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
+    padding: 0;
 
     article {
-        grid-column: 1 / -1;
         display: flex;
         flex-direction: column;
+        padding-left: 1rem;
     }
 }
 
 @media (min-width: 768px) {
     .event-details-section {
-        img {
-            grid-column: 1 / 7;
-        }
 
         article {
-            grid-column: 7 / -1;
-            flex-direction: row;
+            flex-direction: column;
+            padding-left: 1.5rem;
         }
     }
 }
 
 @media (min-width: 1024px) {
-    
+    .event-details-section {
+
+        article {
+            padding-left: 2rem;
+        }
+    }
 }

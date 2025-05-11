@@ -4,7 +4,7 @@ import "../styles/eventCards.scss";
 
 export default function EventCards({events, isFeatured}) {
     return (
-        <section className="event-cards-section grid">
+        <section className="event-cards-section content-container grid">
             {/*
                 Mapper ut events, som holder på en rekke arrangementer,
                 og sender hvert enkelt arrangement videre til EventCard-komponentet

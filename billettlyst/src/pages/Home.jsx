@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import EventCards from "../components/EventCards";
 
 import "../styles/home.scss";
+import Heading from "../components/Heading";
 
 export default function Home() {
     // useState-hook som tar imot og holder på utvalgte arrangement(er)
@@ -26,7 +27,7 @@ export default function Home() {
     const getFeaturedEvents = async(attractionIds) => {
         fetch(`https://app.ticketmaster.com/discovery/v2/attractions.json?id=${attractionIds}&locale=NO&apikey=nwV2iLAvNoKVuQiXYNyXE1lHAr9P850o`)
             .then(response => response.json())
-            .then(data => setFeaturedEvents(data._embedded?.attractions))
+            .then(data => setFeaturedEvents(data?._embedded?.attractions))
             .catch(error => console.error("Something went wrong fetching events:", error))
     };
 
@@ -39,7 +40,7 @@ export default function Home() {
     const getEventsByCity = async(city) => {
         fetch(`https://app.ticketmaster.com/discovery/v2/events.json?city=${city}&size=10&locale=NO&apikey=nwV2iLAvNoKVuQiXYNyXE1lHAr9P850o`)
             .then(response => response.json())
-            .then(data => setCityEvents(data._embedded?.events))
+            .then(data => setCityEvents(data?._embedded?.events))
             .catch(error => console.error("Something went wrong fetching events:", error))
     };
 
@@ -61,12 +62,14 @@ export default function Home() {
             </section>
 
             <section className="featured-events-section">
+                <Heading variant="h1">Utvalgte festivaler</Heading>
                 {/* Sender med state (featuredEvents) som prop */}
                 <EventCards events={featuredEvents} isFeatured={true} />
             </section>
 
-            <section className="city-events-section">
-                <h2>Arrangementer i {city}</h2>
+            <section className="events-section">
+                <Heading variant="h2">Arrangementer i {city}</Heading>
+                {/* Sender med state (cityEvents) som prop */}
                 <EventCards events={cityEvents} />
             </section>
         </>

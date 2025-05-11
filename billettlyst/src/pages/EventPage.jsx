@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import "../styles/eventPage.scss";
+import EventCards from "../components/EventCards";
+import EventCard from "../components/EventCard";
+import Heading from "../components/Heading";
 
 export default function EventPage() {
     const {slug} = useParams();
@@ -25,11 +28,25 @@ export default function EventPage() {
     }, []);
 
     return (
-        <section className="event-details-section grid">
-            <img src={event._embedded?.events[0]?.images[0]?.url} />
-            <article>
-                <h1>{event._embedded?.events[0]?._embedded?.attractions[0]?.name}</h1>
-            </article>
-        </section>
+        <>
+            <section className="event-details-section">
+                <Heading variant="h1">{event?._embedded?.events[0]?._embedded?.attractions[0]?.name}</Heading>
+
+                <article className="content-container">
+                    <p>Festival &bull; {event?._embedded?.events[0]?.classifications[0]?.segment?.name} &bull; {event?._embedded?.events[0]?.classifications[0]?.genre?.name} &bull; {event?._embedded?.events[0]?.classifications[0]?.subGenre?.name}</p>
+                </article>
+
+                <Heading variant="h2">Følg oss på sosiale medier</Heading>
+
+                <ul className="social-links">
+                    
+                </ul>
+            </section>
+
+            <section className="events-section">
+                <Heading variant="h2">Festivalpass</Heading>
+                <EventCards events={event?._embedded?.events} />
+            </section>
+        </>
     )
 }
