@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import "../styles/eventCard.scss";
 
-export default function EventCard({event, isFeatured = false}) {
+export default function EventCard({event, variant="basic"}) {
 
     const slugify = (string) => {
         return string
@@ -12,15 +12,48 @@ export default function EventCard({event, isFeatured = false}) {
     };
 
     return (
-        // Henter ut relevant arrangement-informasjon
+        /* 
+            Henter ut relevant arrangement-informasjon med utgangspunkt i hvilket type kort
+            som skal vises (i ulike varianter)
+        */
         <article className="event-card">
-            {isFeatured ? (
+            {/* 
+                Interaktive kort
+                - Bruk: variant="interactive"
+                - Eksempel: Featured events 
+            */}
+            {variant === "interactive" && (
                 <Link to={`/event/${slugify(event?.name)}`} className="event-card-link">
                     <img src={event?.images[5]?.url} alt="event-image" />
-                    <p>Festival &bull; {event?.classifications[0]?.segment?.name}</p>
+                    <p>Festival</p>
                     <h3>{event?.name}</h3>
                 </Link>
-            ) : (
+            )}
+
+            {/* 
+                Standard kort
+                - Eksempel: City events 
+            */}
+            {variant === "basic" && (
+                <div className="event-card-container">
+                    <img src={event?.images[3]?.url} alt="event-image" />
+                    <p>{event?.classifications[0]?.genre?.name}</p>
+                    <h3>{event?.name}</h3>
+                    <p className="event-card-details">
+                        <span>{new Date(event?.dates?.start?.localDate).toLocaleDateString("no-NO")}</span>
+                        
+                        <span>{event?._embedded?.venues[0]?.name}</span>
+                        <span>{event?._embedded?.venues[0]?.city?.name}, {event?._embedded?.venues[0]?.country?.name}</span>
+                    </p>
+                </div>
+            )}
+
+            {/* 
+                Hybrid kort (med interaktive elementer)
+                - Bruk: variant="hybrid"
+                - Eksempel: Festivalpass, kategori-filtering
+            */}
+            {variant === "hybrid" && (
                 <div className="event-card-container">
                     <img src={event?.images[3]?.url} alt="event-image" />
                     <p>

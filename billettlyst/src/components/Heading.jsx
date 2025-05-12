@@ -4,7 +4,7 @@ export default function Heading({variant, children}) {
     const Tag = variant;
     
     return ( 
-        <div className="content-container">
+        <div className="section-heading content-container">
             <Tag>{children}</Tag> 
         </div>
     )

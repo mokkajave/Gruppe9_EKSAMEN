@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 
 import "../styles/categoryPage.scss";
+import Heading from "../components/Heading";
 
 export default function CategoryPage() {
     const {slug} = useParams()
@@ -15,7 +16,7 @@ export default function CategoryPage() {
 
     return (
         <section className="category-hero-section">
-            <h1>{slug.charAt(0).toUpperCase() + slug.slice(1)}</h1>
+            <Heading variant="h1">{slug.charAt(0).toUpperCase() + slug.slice(1)}</Heading>
         </section>
     )
 }

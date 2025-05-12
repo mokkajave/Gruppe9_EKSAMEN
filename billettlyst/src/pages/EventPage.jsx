@@ -46,12 +46,16 @@ export default function EventPage() {
 
             <section className="events-section">
                 <Heading variant="h2">Festivalpass</Heading>
-                <EventCards events={event?._embedded?.events} />
+
+                {/* Festivalpass */}
+                <EventCards events={event?._embedded?.events} variant="hybrid" />
             </section>
 
             <section className="artist-section">
                 <Heading variant="h2">Artister</Heading>
+
                 <section className="artist-cards-section content-container grid">
+                    {/* Mapper ut direkte i EventPage */}
                     {event?._embedded?.events[0]?._embedded?.attractions?.map(artist => (
                         <ArtistCard key={artist.id} artist={artist}/>
                     ))}

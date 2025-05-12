@@ -12,6 +12,14 @@
     border-top: solid 1.5px var(--light-gray);
     gap: 2rem;
     background-color: var(--off-white-2);
+
+    .city-buttons-section {
+        display: flex;
+        flex-direction: column;
+        gap: .25rem;
+        padding-top: 1rem;
+        padding-bottom: 0;
+    }
 }
 
 @media (min-width: 768px) {
@@ -21,6 +29,10 @@
 
     .events-section {
         gap: 1.5rem;
+
+        .city-buttons-section {
+            flex-direction: row;
+        }
     }
 }
 
