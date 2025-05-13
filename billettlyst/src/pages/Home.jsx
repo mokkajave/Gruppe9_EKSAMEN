@@ -68,7 +68,7 @@ export default function Home() {
             </section>
 
             <section className="featured-events-section">
-                <Heading variant="h1">Utvalgte festivaler</Heading>
+                <Heading variant="h1">Sommerens festivaler</Heading>
                 
                 {/* Sender med state (featuredEvents) som prop */}
                 <EventCards events={featuredEvents} variant="interactive" />
