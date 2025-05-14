@@ -32,14 +32,23 @@ export default function EventPage() {
         <>
             <section className="event-details-section">
                 <Heading variant="h1">{event?._embedded?.events[0]?._embedded?.attractions[0]?.name}</Heading>
-
+                
                 <article className="content-container">
-                    <p>Festival &bull; {event?._embedded?.events[0]?.classifications[0]?.segment?.name} &bull; {event?._embedded?.events[0]?.classifications[0]?.genre?.name} &bull; {event?._embedded?.events[0]?.classifications[0]?.subGenre?.name}</p>
+                    <ul className="event-genres">
+                        <li>{event?._embedded?.events[0]?.classifications[0]?.segment?.name}</li>
+                        <li>{event?._embedded?.events[0]?.classifications[0]?.genre?.name}</li>
+                        <li>{event?._embedded?.events[0]?.classifications[0]?.subGenre?.name}</li>
+                    </ul>
+                    <ul className="event-venues">
+                        <li>{new Date(event?._embedded?.events[0]?.dates?.start?.localDate).toLocaleDateString("no-NO")}</li>
+                        <li>{event?._embedded?.events[0]?._embedded?.venues[0]?.name}</li>
+                        <li>{event?._embedded?.events[0]?._embedded?.venues[0]?.city?.name}, {event?._embedded?.events[0]?._embedded?.venues[0]?.country?.name}</li>
+                    </ul>
                 </article>
 
                 <Heading variant="h2">Følg oss på sosiale medier</Heading>
 
-                <ul className="social-links">
+                <ul className="event-socials">
                     
                 </ul>
             </section>
@@ -51,7 +60,7 @@ export default function EventPage() {
                 <EventCards events={event?._embedded?.events} variant="hybrid" />
             </section>
 
-            <section className="artist-section">
+            <section className="artists-section">
                 <Heading variant="h2">Artister</Heading>
 
                 <section className="artist-cards-section content-container grid">

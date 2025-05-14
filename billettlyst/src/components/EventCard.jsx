@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 
 import "../styles/eventCard.scss";
 
+// Som standard benyttes "basic" - om ikke annet er spesifisert
 export default function EventCard({event, variant="basic"}) {
 
+    // Funksjonen gjør lenken i interaktive kort URL-vennlig
     const slugify = (string) => {
         return string
             .toLowerCase() // Gjør alle bokstaver små
@@ -36,15 +38,15 @@ export default function EventCard({event, variant="basic"}) {
             */}
             {variant === "basic" && (
                 <div className="event-card-container">
-                    <img src={event?.images[5]?.url} alt="event-image" />
+                    <img src={event?.images[0]?.url} alt="event-image" />
                     <div className="event-card-details">
                         <p>{event?.classifications[0]?.genre?.name}</p>
                         <h3>{event?.name}</h3>
-                        <p className="event-info">
-                            <span>{new Date(event?.dates?.start?.localDate).toLocaleDateString("no-NO")}</span>
-                            <span>{event?._embedded?.venues[0]?.name}</span>
-                            <span>{event?._embedded?.venues[0]?.city?.name}, {event?._embedded?.venues[0]?.country?.name}</span>
-                        </p>
+                        <ul className="event-card-info">
+                            <li>{new Date(event?.dates?.start?.localDate).toLocaleDateString("no-NO")}</li>
+                            <li>{event?._embedded?.venues[0]?.name}</li>
+                            <li>{event?._embedded?.venues[0]?.city?.name}, {event?._embedded?.venues[0]?.country?.name}</li>
+                        </ul>
                     </div>
                 </div>
             )}
@@ -56,15 +58,14 @@ export default function EventCard({event, variant="basic"}) {
             */}
             {variant === "hybrid" && (
                 <div className="event-card-container">
-                    <img src={event?.images[3]?.url} alt="event-image" />
+                    <img src={event?.images[0]?.url} alt="event-image" />
                     <div className="event-card-details">
-                        <p>
-                            <span>{event?._embedded?.venues[0]?.country?.name} &bull; </span>
-                            <span>{event?._embedded?.venues[0]?.city?.name} &bull; </span>
-                            <span>{new Date(event?.dates?.start?.localDate).toLocaleDateString("no-NO")}</span>
-                        </p>
                         <h3>{event?.name}</h3>
-                        <div className="event-buttons">
+                        <ul className="event-card-info">
+                            <li>{new Date(event?.dates?.start?.localDate).toLocaleDateString("no-NO")}</li>
+                            <li>{event?._embedded?.venues[0]?.name}</li>
+                        </ul>
+                        <div className="event-card-buttons">
                             <button className="event-button">Legg i handlekurv</button>
                             <button className="event-button-favorite"><span className="material-symbols-outlined favorite-icon">favorite</span></button>
                         </div>
