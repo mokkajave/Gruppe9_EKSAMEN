@@ -1,8 +1,11 @@
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import "../styles/nav.scss";
 
 export default function Nav() {
+    //useLocation brukes til å hente den nåværende slugen og pathname brukes for å sjekke om denne er "/dashboard". 
+    //Om den er dette vil en ternary operator styre hvilken knapp som vises. 
+    //KILDER useLocation:https://reactrouter.com/api/hooks/useLocation , pathname:https://www.w3schools.com/Jsref/prop_loc_pathname.asp
     const location = useLocation();
     const dashboardActive = location.pathname === "/dashboard";
 
