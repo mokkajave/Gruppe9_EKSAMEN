@@ -11,8 +11,28 @@ export default {
         {
             name: "gender",
             title: "Gender",
-            type: "string",
-        },
+            type: "array",
+            of: [
+                { 
+                    type: "string" 
+                }
+            ],
+            options: {
+              list: [
+                { 
+                    title: "Male", 
+                    value: "male",
+                },
+                { 
+                    title: "Female", 
+                    value: "female",
+                },
+              ],
+
+              layout: "checkbox",
+
+            },
+          },
         {
             name: "age",
             title: "Age",
