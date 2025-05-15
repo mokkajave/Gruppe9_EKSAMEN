@@ -22,7 +22,7 @@ export default function EventCard({event, variant="basic"}) {
             {/* 
                 Interaktive kort
                 - Bruk: variant="interactive"
-                - Eksempel: Featured events 
+                - Eksempel: Featured events / festivaler
             */}
             {variant === "interactive" && (
                 <Link to={`/event/${slugify(event?.name)}`} className="event-card-link">

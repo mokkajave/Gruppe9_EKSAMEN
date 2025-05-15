@@ -40,7 +40,6 @@ export default function EventPage() {
                         <li>{event?._embedded?.events[0]?.classifications[0]?.subGenre?.name}</li>
                     </ul>
                     <ul className="event-venues">
-                        <li>{new Date(event?._embedded?.events[0]?.dates?.start?.localDate).toLocaleDateString("no-NO")}</li>
                         <li>{event?._embedded?.events[0]?._embedded?.venues[0]?.name}</li>
                         <li>{event?._embedded?.events[0]?._embedded?.venues[0]?.city?.name}, {event?._embedded?.events[0]?._embedded?.venues[0]?.country?.name}</li>
                     </ul>
