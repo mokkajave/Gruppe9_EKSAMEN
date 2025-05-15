@@ -81,7 +81,12 @@ export default function EventCard({event, variant="basic"}) {
             */}
             {variant === "category" && (
                 <div className="event-card-container">
-                    <img src={event?.images[0]?.url} alt="event-image" />
+                    <div className="image-wrapper">
+                        <img src={event?.images[0]?.url} alt="event-image" />
+                        <button className="event-button-favorite">
+                            <span className="material-symbols-outlined favorite-icon">favorite</span>
+                        </button>
+                    </div>
                     <div className="event-card-details">
                         <p>{event?.classifications[0]?.genre?.name}</p>
                         <h3>{event?.name}</h3>
@@ -93,11 +98,6 @@ export default function EventCard({event, variant="basic"}) {
                             <li>{event?._embedded?.venues[0]?.country?.name}</li>
                             <li>{event?._embedded?.venues[0]?.city?.name}</li> 
                         </ul>
-                        <div className="event-card-buttons">
-                            <button className="event-button-favorite">
-                                <span className="material-symbols-outlined favorite-icon">favorite</span>
-                            </button>
-                        </div>
                     </div>
                 </div>
             )}
