@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../styles/login.scss"
 
 export default function Login({}) {
   const [userLogin, setUserLogin] = useState(false);
@@ -37,7 +38,7 @@ export default function Login({}) {
   };
 
   return (
-    <section>
+    <section className="content-container">
       <h1>Logg inn</h1>
       <form>
         <label>
