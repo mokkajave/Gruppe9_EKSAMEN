@@ -5,8 +5,10 @@ import Home from './pages/Home'
 import EventPage from './pages/EventPage'
 import CategoryPage from './pages/CategoryPage'
 import Dashboard from './pages/Dashboard'
+import Login from './pages/Login'
 
 import './styles/global.scss'
+
 
 function App() {
 
@@ -18,6 +20,7 @@ function App() {
           <Route path="/event/:slug" element={<EventPage />} />
           <Route path="/category/:slug" element={<CategoryPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </Layout>
     </>

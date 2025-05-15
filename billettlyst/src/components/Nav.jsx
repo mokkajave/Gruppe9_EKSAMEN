@@ -12,7 +12,7 @@ export default function Nav() {
                 <li><Link to="/category/sport" className="nav-link">Sport</Link></li>
                 <li><Link to="/category/teater" className="nav-link">Teater</Link></li>
             </ul>
-            <Link to="/dashboard" className="nav-link nav-link-button">Logg inn</Link>
+            <Link to="/login" className="nav-link nav-link-button">Logg inn</Link>
         </nav>
     )
 }
