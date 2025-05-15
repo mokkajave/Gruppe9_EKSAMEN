@@ -38,7 +38,7 @@ export default function Login({}) {
   };
 
   return (
-    <section className="content-container">
+    <section className="log-in-form content-container">
       <h1>Logg inn</h1>
       <form>
         <label>
