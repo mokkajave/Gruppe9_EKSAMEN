@@ -82,21 +82,20 @@
             margin-top: auto;
             padding-top: 2rem;
 
-            .event-button {
+            .event-button-cart {
                 width: 100%;
             }
-
-            .event-button-favorite {
-                display: flex;
-                margin-left: .25rem;
-                justify-content: center;
-                align-items: center;
-                padding: 0 1rem 0 1rem;
-                
-                .favorite-icon {
-                    font-size: 1.75rem;
-                    font-weight: 450;
-                }
+        }
+        
+        .event-button-favorite {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: .75rem 1rem .75rem 1rem;
+            
+            .favorite-icon {
+                font-size: 1.75rem;
+                font-weight: 450;
             }
         }
     }
@@ -113,9 +112,14 @@
         }
 
         .event-card-container {
-
             img {
                 height: 240px;
+            }
+
+            .event-card-buttons {
+                .event-button-favorite {
+                    width: auto;
+                }
             }
         }
     }
@@ -137,7 +141,7 @@
             .event-card-buttons {
                 justify-content: space-between;
 
-                .event-button {
+                .event-button-cart {
                     width: auto;
                 }
             }

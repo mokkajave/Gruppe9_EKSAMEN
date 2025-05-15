@@ -22,7 +22,7 @@ export default function EventCard({event, variant="basic"}) {
             {/* 
                 Interaktive kort
                 - Bruk: variant="interactive"
-                - Eksempel: Featured events / festivaler
+                - Eksempel: Featured events / festivaler i Home
             */}
             {variant === "interactive" && (
                 <Link to={`/event/${slugify(event?.name)}`} className="event-card-link">
@@ -34,7 +34,8 @@ export default function EventCard({event, variant="basic"}) {
 
             {/* 
                 Standard kort
-                - Eksempel: City events 
+                - Krever ingen prop
+                - Eksempel: City events i Home
             */}
             {variant === "basic" && (
                 <div className="event-card-container">
@@ -45,18 +46,19 @@ export default function EventCard({event, variant="basic"}) {
                         <ul className="event-card-info">
                             <li>{new Date(event?.dates?.start?.localDate).toLocaleDateString("no-NO")}</li>
                             <li>{event?._embedded?.venues[0]?.name}</li>
-                            <li>{event?._embedded?.venues[0]?.city?.name}, {event?._embedded?.venues[0]?.country?.name}</li>
+                            <li>{event?._embedded?.venues[0]?.country?.name}</li>
+                            <li>{event?._embedded?.venues[0]?.city?.name}</li> 
                         </ul>
                     </div>
                 </div>
             )}
 
             {/* 
-                Hybrid kort (med interaktive elementer)
-                - Bruk: variant="hybrid"
-                - Eksempel: Festivalpass, kategori-filtrering
+                Festivalpass-kort
+                - Bruk: variant="festival-pass"
+                - Eksempel: Festivalpass i EventPage
             */}
-            {variant === "hybrid" && (
+            {variant === "festival-pass" && (
                 <div className="event-card-container">
                     <img src={event?.images[0]?.url} alt="event-image" />
                     <div className="event-card-details">
@@ -66,8 +68,35 @@ export default function EventCard({event, variant="basic"}) {
                             <li>{event?._embedded?.venues[0]?.name}</li>
                         </ul>
                         <div className="event-card-buttons">
-                            <button className="event-button">Legg i handlekurv</button>
-                            <button className="event-button-favorite"><span className="material-symbols-outlined favorite-icon">favorite</span></button>
+                            <button className="event-button-cart">Legg i handlekurv</button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/*
+                Kategori-kort (med interaktiv knapp)
+                - Bruk: variant="category"
+                - Eksempel: kategori-kort i CategoryPage
+            */}
+            {variant === "category" && (
+                <div className="event-card-container">
+                    <img src={event?.images[0]?.url} alt="event-image" />
+                    <div className="event-card-details">
+                        <p>{event?.classifications[0]?.genre?.name}</p>
+                        <h3>{event?.name}</h3>
+                        <ul className="event-card-info">
+                            <li>{event?.dates?.start?.localDate ? 
+                                new Date(event?.dates?.start?.localDate).toLocaleDateString("no-NO") 
+                                : ""}</li>
+                            <li>{event?._embedded?.venues[0]?.name}</li>
+                            <li>{event?._embedded?.venues[0]?.country?.name}</li>
+                            <li>{event?._embedded?.venues[0]?.city?.name}</li> 
+                        </ul>
+                        <div className="event-card-buttons">
+                            <button className="event-button-favorite">
+                                <span className="material-symbols-outlined favorite-icon">favorite</span>
+                            </button>
                         </div>
                     </div>
                 </div>

@@ -18,7 +18,7 @@ export default function EventPage() {
     const getEvent = async() => {
         const keyword = formattedKeyword(slug);
 
-        fetch(`https://app.ticketmaster.com/discovery/v2/events.json?keyword=${keyword}&locale=NO&apikey=nwV2iLAvNoKVuQiXYNyXE1lHAr9P850o`)
+        fetch(`https://app.ticketmaster.com/discovery/v2/events.json?keyword=${keyword}&locale=*&apikey=nwV2iLAvNoKVuQiXYNyXE1lHAr9P850o`)
             .then(response => response.json())
             .then(data => setEvent(data))
             .catch(error => console.error("Something went wrong fetching event:", error))
@@ -56,7 +56,7 @@ export default function EventPage() {
                 <Heading variant="h2">Festivalpass</Heading>
 
                 {/* Festivalpass */}
-                <EventCards events={event?._embedded?.events} variant="hybrid" />
+                <EventCards events={event?._embedded?.events} variant="festival-pass" />
             </section>
 
             <section className="artists-section">
