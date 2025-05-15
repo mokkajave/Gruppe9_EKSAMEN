@@ -15,8 +15,19 @@ export default function CategoryPage() {
     const backgroundImage = backgroundImages[slug];
 
     return (
-        <section className="category-hero-section">
-            <Heading variant="h1">{slug.charAt(0).toUpperCase() + slug.slice(1)}</Heading>
-        </section>
+        <>
+            <section className="category-hero-section">
+                <Heading variant="h1">{slug.charAt(0).toUpperCase() + slug.slice(1)}</Heading>
+            </section>
+            <section>
+                <Heading variant="h2">Attraksjoner</Heading>
+            </section>
+            <section>
+                <Heading variant="h2">Arrangementer</Heading>
+            </section>
+            <section>
+                <Heading variant="h2">Spillesteder</Heading>
+            </section>
+        </>
     )
 }
