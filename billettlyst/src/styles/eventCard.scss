@@ -73,7 +73,7 @@
                 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
                 justify-content: center;
                 align-items: center;
-                padding: .75rem 1.5rem .75rem 1.5rem;
+                padding: .75rem 1rem .75rem 1rem;
 
                 &:hover {
                     background-color: #ffbdbd;
@@ -135,12 +135,6 @@
             img {
                 height: 240px;
             }
-
-            .event-card-buttons {
-                .event-button-favorite {
-                    width: auto;
-                }
-            }
         }
     }
 }
@@ -156,6 +150,12 @@
         .event-card-container {
             img {
                 height: 310px;
+            }
+
+            .image-wrapper {
+                .event-button-favorite {
+                    padding: .75rem 1.5rem .75rem 1.5rem;
+                }
             }
 
             .event-card-buttons {
