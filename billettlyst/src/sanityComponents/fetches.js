@@ -3,7 +3,7 @@ import { client } from "./client";
   // Fetcher alle brukere fra sanity
   export async function fetchAllSanityUsers() {
     const data = await client.fetch(
-      `*[_type == "user"]{_id, name, age, gender, wishlist[], previous_purchases[], image{asset ->{ _id, url }}}`
+      `*[_type == "user"]{_id, name, age, gender, whishlist[], previous_purchases[], image{asset ->{ _id, url }}}`
     );
     return data;
   }

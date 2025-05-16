@@ -1,3 +1,36 @@
 .user-section {
     padding: 0;
 }
+
+.sanity-users{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.sanity-user-card{
+    border: 5px solid black;
+    
+    img{
+        max-width: 300px;
+    }
+
+    h2{
+        text-align: center;
+    }
+    
+}
+.sanity-events{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.sanity-event-card{
+    border: 5px solid black;
+    padding: 0.5rem;
+        
+    h2{
+        text-align: center;
+    }
+}

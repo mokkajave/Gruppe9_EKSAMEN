@@ -28,25 +28,24 @@ export default function Dashboard() {
     return (
         <section className="user-section">
             <Heading variant="h1">Min Side</Heading>
+
+            <h2>Attraksjoner</h2>
             <section className="sanity-events">
-                <h2>Attraksjoner</h2>
-                <section className="sanity-event-card">
                     {sanityEvents.map((sanityEvent, index) => (
-                        <article key={index}>
+                        <article className="sanity-event-card" key={index}>
                         <h2>{sanityEvent?.title}</h2>
                         </article>))}
-                </section>
-                
             </section>
+
+            <h2>Brukere</h2>
             <section className="sanity-users">
-                <h2>Brukere</h2>
-                <section className="sanity-user-card">
-                    {sanityUsers.map((sanityUser, index) => (
-                        <article key={index}>
+                    {sanityUsers?.map((sanityUser, index) => (
+                        <article className="sanity-user-card" key={index}>
                         <img src={sanityUser?.image?.asset?.url} alt="user-image"/>
                         <h2>{sanityUser?.name}</h2>
+                        <ul>Whishlist</ul>
+                        <ul>Previous Purchases</ul>
                         </article>))}
-                </section>
             </section>
         </section>
     )
