@@ -64,8 +64,8 @@ export default {
             ]
         },
         {
-            name: "whishlist",
-            title: "Whishlist",
+            name: "wishlist",
+            title: "Wishlist",
             type: "array",
             of: [
                 {
