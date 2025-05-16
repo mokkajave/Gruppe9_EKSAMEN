@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "../styles/eventCard.scss";
 
 // Som standard benyttes "basic" - om ikke annet er spesifisert
-export default function EventCard({event, variant="basic", wishlist, addToWishlist}) {
+export default function EventCard({event, variant="basic", wishlist = [], addToWishlist = () => {}}) {
 
     // Funksjonen gjør lenken i interaktive kort URL-vennlig
     const slugify = (string) => {
