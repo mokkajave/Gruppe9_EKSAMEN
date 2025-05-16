@@ -10,7 +10,7 @@ export default {
         },
         {
             name: "apiid",
-            title: "apiId",
+            title: "API id",
             type: "string",
         }
     ]

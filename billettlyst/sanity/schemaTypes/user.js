@@ -47,6 +47,16 @@ export default {
                     type: "object",
                     fields: [
                         {
+                            name: "title",
+                            title: "Title",
+                            type: "string",
+                        },
+                        {
+                            name: "apiid",
+                            title: "API id",
+                            type: "string",
+                        },
+                        {
                             name: "reference",
                             title: "Reference",
                             type: "string",
@@ -63,6 +73,16 @@ export default {
                 {
                     type: "object",
                     fields: [
+                        {
+                            name: "title",
+                            title: "Title",
+                            type: "string",
+                        },
+                        {
+                            name: "apiid",
+                            title: "API id",
+                            type: "string",
+                        },
                         {
                             name: "reference",
                             title: "Reference",
