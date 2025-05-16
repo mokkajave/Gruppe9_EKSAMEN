@@ -25,6 +25,27 @@ export default function CategoryPage() {
             .catch(error => console.error("Something went wrong fetching:", error))
     };
 
+    /*
+        - En funksjon (callback) som håndterer et event (klikk, scroll, etc.)
+        - Funksjonen (handleClick) håndterer et klikk på knapp i EventCard
+        - Når knappen trykkes, sjekker funksjonen om "event" ligger i state (wishlist)
+            - Ligger "event" i listen, blir den filtrert ut - fjernet
+            - Ligger "event" ikke i listen, blir den lagt til (setWishlist)
+        - Funksjonen sjekker etter tilstedeværende ved å sammenligne ID-er som allerede
+        ligger i state (wishlist) med ID-en til det aktuelle elementet (event)
+    */
+    const handleClick = (event) => {
+        const exist = wishlist.find((item) => item.id === event.id)
+
+        setWishlist((prev) => 
+            exist ? 
+                prev.filter((item) => item.id !== event.id)
+                : [...prev, event]
+        );
+
+        console.log("Event i liste?:", exist)
+    }
+
     useEffect(() => {
             // Benytter "featuredEventsIds" som parameter
             getEvents()
@@ -52,14 +73,24 @@ export default function CategoryPage() {
             <section className="events-section">
                 <Heading variant="h2">Attraksjoner</Heading>
 
-                <EventCards events={attractions} variant="category" />
+                <EventCards 
+                    events={attractions} 
+                    variant="category"
+                    wishlist={wishlist}
+                    addToWishlist={handleClick}
+                />
             </section>
 
             {/* Arrangementer */}
             <section className="events-section">
                 <Heading variant="h2">Arrangementer</Heading>
 
-                <EventCards events={events} variant="category" />
+                <EventCards 
+                    events={events} 
+                    variant="category"
+                    wishlist={wishlist}
+                    addToWishlist={handleClick}
+                />
             </section>
 
             {/* Spillesteder */}

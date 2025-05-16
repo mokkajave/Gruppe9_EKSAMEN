@@ -29,7 +29,7 @@ export default function Home() {
         - Plasserer hentede attraksjoner i state (featuredEvents)
     */
     const getFeaturedEvents = async(attractionIds) => {
-        fetch(`https://app.ticketmaster.com/discovery/v2/attractions.json?id=${attractionIds}&locale=*&apikey=nwV2iLAvNoKVuQiXYNyXE1lHAr9P850o`)
+        fetch(`https://app.ticketmaster.com/discovery/v2/attractions.json?id=${attractionIds}&locale=NO&apikey=nwV2iLAvNoKVuQiXYNyXE1lHAr9P850o`)
             .then(response => response.json())
             .then(data => setFeaturedEvents(data?._embedded?.attractions))
             .catch(error => console.error("Something went wrong fetching events:", error))
