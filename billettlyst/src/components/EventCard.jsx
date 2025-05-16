@@ -21,6 +21,22 @@ export default function EventCard({event, variant="basic", wishlist = [], addToW
     */
     const inWishlist = wishlist.some(item => item.id === event.id);
 
+    /* 
+        - Relevante arrangement-detaljer samlet i konstanter (variabler) - for lesbarhet og fleksibilitet
+        - Sikkerhetssjekk "||":
+            - API-et har ikke all data i "spillesteder" (venues) alene
+            - Gir alternativ utskrift - nyttig i kort 4
+            - "Dersom {dette} ikke eksisterer, vis {dette}"
+    */
+    const eventName = event?.name || "";
+    const image = event?.images?.[0]?.url || "";
+    const genre = event?.classifications?.[0]?.genre?.name || "";
+    const date = new Date(event?.dates?.start?.localDate).toLocaleDateString("no-NO") || "";
+    const venue = event?._embedded?.venues?.[0];
+    const venueName = venue?.name || "";
+    const country = venue?.country?.name || event?.country?.name; // event || venue
+    const city = venue?.city?.name || event?.city?.name; // event || venue
+
     return (
         /* 
             Henter ut relevant arrangement-informasjon med utgangspunkt i hvilket type kort
@@ -33,10 +49,10 @@ export default function EventCard({event, variant="basic", wishlist = [], addToW
                 - Eksempel: Featured events / festivaler i Home
             */}
             {variant === "interactive" && (
-                <Link to={`/event/${slugify(event?.name)}`} className="event-card-link">
-                    <img src={event?.images[5]?.url} alt="event-image" />
+                <Link to={`/event/${slugify(eventName)}`} className="event-card-link">
+                    <img src={image} alt="event-image" />
                     <p>Festival</p>
-                    <h3>{event?.name}</h3>
+                    <h3>{eventName}</h3>
                 </Link>
             )}
 
@@ -47,15 +63,15 @@ export default function EventCard({event, variant="basic", wishlist = [], addToW
             */}
             {variant === "basic" && (
                 <div className="event-card-container">
-                    <img src={event?.images[0]?.url} alt="event-image" />
+                    <img src={image} alt="event-image" />
                     <div className="event-card-details">
-                        <p>{event?.classifications[0]?.genre?.name}</p>
-                        <h3>{event?.name}</h3>
+                        <p>{genre}</p>
+                        <h3>{eventName}</h3>
                         <ul className="event-card-info">
-                            <li>{new Date(event?.dates?.start?.localDate).toLocaleDateString("no-NO")}</li>
-                            <li>{event?._embedded?.venues[0]?.name}</li>
-                            <li>{event?._embedded?.venues[0]?.country?.name}</li>
-                            <li>{event?._embedded?.venues[0]?.city?.name}</li> 
+                            <li>{date}</li>
+                            <li>{venueName}</li>
+                            <li>{country}</li>
+                            <li>{city}</li> 
                         </ul>
                     </div>
                 </div>
@@ -68,12 +84,12 @@ export default function EventCard({event, variant="basic", wishlist = [], addToW
             */}
             {variant === "festival-pass" && (
                 <div className="event-card-container">
-                    <img src={event?.images[0]?.url} alt="event-image" />
+                    <img src={image} alt="event-image" />
                     <div className="event-card-details">
-                        <h3>{event?.name}</h3>
+                        <h3>{eventName}</h3>
                         <ul className="event-card-info">
-                            <li>{new Date(event?.dates?.start?.localDate).toLocaleDateString("no-NO")}</li>
-                            <li>{event?._embedded?.venues[0]?.name}</li>
+                            <li>{date}</li>
+                            <li>{venueName}</li>
                         </ul>
                         <div className="event-card-buttons">
                             <button className="event-button-cart">Legg i handlekurv</button>
@@ -82,63 +98,35 @@ export default function EventCard({event, variant="basic", wishlist = [], addToW
                 </div>
             )}
 
-            {/* 4 OG 5 BENYTTES KUN I CATEGORY PAGE */}
             {/*
                 4 Kategori-kort (med ønskeliste-knapp)
                 - Bruk: variant="category"
                 - Eksempel: kategori-kort i CategoryPage
             */}
+
             {variant === "category" && (
                 <div className="event-card-container">
                     <div className="image-wrapper">
-                        <img src={event?.images[0]?.url} alt="event-image" />
+                        <img src={image} alt="event-image" />
                         <button className={`event-button-favorite ${inWishlist ? "saved" : ""} `}
-                        onClick={() => addToWishlist(event)}>
+                            onClick={() => addToWishlist(event)}>
                             <span className="material-symbols-outlined favorite-icon">
                                 {inWishlist ? "heart_check" : "favorite"}
                             </span>
                         </button>
                     </div>
                     <div className="event-card-details">
-                        <p>{event?.classifications[0]?.genre?.name}</p>
+                        <p>{genre}</p>
                         <h3>{event?.name}</h3>
                         <ul className="event-card-info">
-                            <li>{event?.dates?.start?.localDate ? 
-                                new Date(event?.dates?.start?.localDate).toLocaleDateString("no-NO") 
-                                : ""}</li>
-                            <li>{event?._embedded?.venues[0]?.name}</li>
-                            <li>{event?._embedded?.venues[0]?.country?.name}</li>
-                            <li>{event?._embedded?.venues[0]?.city?.name}</li> 
+                            <li>{date}</li>
+                            <li>{venueName}</li>
+                            <li>{country}</li>
+                            <li>{city}</li> 
                         </ul>
                     </div>
                 </div>
             )}
-
-            {/*
-                5 Spillested-kort (med ønskeliste-knapp)
-                - Bruk: variant="venue"
-                - Eksempel: spillested-kort (venues) i CategoryPage
-            */}
-            {variant === "venue" && (
-                <div className="event-card-container">
-                <div className="image-wrapper">
-                    <button className={`event-button-favorite ${inWishlist ? "saved" : ""} `}
-                    onClick={() => addToWishlist(event)}>
-                        <span className="material-symbols-outlined favorite-icon">
-                            {inWishlist ? "heart_check" : "favorite"}
-                        </span>
-                    </button>
-                </div>
-                <div className="event-card-details">
-                    <h3>{event?.name}</h3>
-                    <ul className="event-card-info">
-                        <li>{event?.country?.name}</li>
-                        <li>{event?.city?.name}</li>
-                    </ul>
-                </div>
-            </div>
-            )}
         </article>
-        
     )
 }

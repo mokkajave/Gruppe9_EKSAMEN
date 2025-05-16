@@ -28,20 +28,41 @@ export default function EventPage() {
         getEvent();
     }, []);
 
+    /*
+        - Lagrer arrangement-data i konstanter (variabler) - mer lesbart og fleksibelt
+        - Unngår repetisjon
+    */
+   
+    // "Fallback": Dersom data ikke eksisterer, vil den returnere en tom array (liste) / ingen error
+    const attractions = event?._embedded?.events?.[0]?._embedded?.attractions || [];
+    const eventName = attractions?.[0]?.name;
+
+    const classifications = event?._embedded?.events[0]?.classifications?.[0] || "";
+    const segment = classifications?.segment?.name || "";
+    const genre = classifications?.genre?.name || "";
+    const subGenre = classifications?.subGenre?.name || "";
+
+    const venue = event?._embedded?.events?.[0]?._embedded?.venues?.[0] || "";
+    const venueName = venue?.name || "";
+    const country = venue?.country?.name || "";
+    const city = venue?.city?.name || "";
+
+    const festivalPasses = event?._embedded?.events;
+
     return (
         <>
             <section className="event-details-section">
-                <Heading variant="h1">{event?._embedded?.events[0]?._embedded?.attractions[0]?.name}</Heading>
+                <Heading variant="h1">{eventName}</Heading>
                 
                 <article className="content-container">
                     <ul className="event-genres">
-                        <li>{event?._embedded?.events[0]?.classifications[0]?.segment?.name}</li>
-                        <li>{event?._embedded?.events[0]?.classifications[0]?.genre?.name}</li>
-                        <li>{event?._embedded?.events[0]?.classifications[0]?.subGenre?.name}</li>
+                        <li>{segment}</li>
+                        <li>{genre}</li>
+                        <li>{subGenre}</li>
                     </ul>
                     <ul className="event-venues">
-                        <li>{event?._embedded?.events[0]?._embedded?.venues[0]?.name}</li>
-                        <li>{event?._embedded?.events[0]?._embedded?.venues[0]?.city?.name}, {event?._embedded?.events[0]?._embedded?.venues[0]?.country?.name}</li>
+                        <li>{venueName}</li>
+                        <li>{city}, {country}</li>
                     </ul>
                 </article>
 
@@ -56,7 +77,7 @@ export default function EventPage() {
                 <Heading variant="h2">Festivalpass</Heading>
 
                 {/* Festivalpass */}
-                <EventCards events={event?._embedded?.events} variant="festival-pass" />
+                <EventCards events={festivalPasses} variant="festival-pass" />
             </section>
 
             <section className="artists-section">
@@ -64,7 +85,7 @@ export default function EventPage() {
 
                 <section className="artist-cards-section content-container grid">
                     {/* Mapper ut direkte i EventPage */}
-                    {event?._embedded?.events[0]?._embedded?.attractions?.map(artist => (
+                    {attractions?.map(artist => (
                         <ArtistCard key={artist.id} artist={artist}/>
                     ))}
                 </section>
