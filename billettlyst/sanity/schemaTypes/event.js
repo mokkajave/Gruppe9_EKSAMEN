@@ -12,6 +12,29 @@ export default {
             name: "apiid",
             title: "API id",
             type: "string",
+        },
+        {
+            name: "category",
+            title: "Category",
+            type: "string",
+            options: {
+                list: [
+                    {
+                        title: "Sport",
+                        value: "sport"
+                    },
+                    {
+                        title: "Show",
+                        value: "show"
+                    },
+                    {
+                        title: "Festival",
+                        value: "festival"
+                    },
+                ],
+                
+                layout: "radio",
+            }
         }
     ]
 }
