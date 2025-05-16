@@ -27,9 +27,13 @@ export default {
                     title: "Female", 
                     value: "female",
                 },
+                { 
+                    title: "Other", 
+                    value: "other",
+                },
               ],
 
-              layout: "checkbox",
+              layout: "radio",
 
             },
           },
@@ -44,24 +48,12 @@ export default {
             type: "array",
             of: [
                 {
-                    type: "object",
-                    fields: [
+                    type: "reference",
+                    to: [
                         {
-                            name: "title",
-                            title: "Title",
-                            type: "string",
-                        },
-                        {
-                            name: "apiid",
-                            title: "API id",
-                            type: "string",
-                        },
-                        {
-                            name: "reference",
-                            title: "Reference",
-                            type: "string",
+                            type: "event"
                         }
-                    ]
+                    ],
                 }
             ]
         },
@@ -71,24 +63,12 @@ export default {
             type: "array",
             of: [
                 {
-                    type: "object",
-                    fields: [
+                    type: "reference",
+                    to: [
                         {
-                            name: "title",
-                            title: "Title",
-                            type: "string",
-                        },
-                        {
-                            name: "apiid",
-                            title: "API id",
-                            type: "string",
-                        },
-                        {
-                            name: "reference",
-                            title: "Reference",
-                            type: "string",
+                            type: "event"
                         }
-                    ]
+                    ],
                 }
             ]
         }
