@@ -38,9 +38,9 @@ export default function Login({}) {
   };
 
   return (
-    <section className="log-in-form content-container">
-      <h1>Logg inn</h1>
-      <form>
+    <section className="log-in-form">
+      <form className="content-container">
+        <h1>Logg inn</h1>
         <label>
           Brukernavn
           <input
@@ -60,8 +60,8 @@ export default function Login({}) {
           />
         </label>
         <button onClick={handleClick}>Logg inn</button>
+        {error}
       </form>
-      {error}
     </section>
   );
 }
