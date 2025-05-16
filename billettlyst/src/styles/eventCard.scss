@@ -79,6 +79,11 @@
                     background-color: #ffbdbd;
                     color: #e63946;
                 }
+                
+                &.saved {
+                    background-color: #e63946;
+                    color: #ffbdbd;
+                }
 
                 .favorite-icon {
                     font-size: 1.75rem;

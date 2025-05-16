@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "../styles/eventCard.scss";
 
 // Som standard benyttes "basic" - om ikke annet er spesifisert
-export default function EventCard({event, variant="basic"}) {
+export default function EventCard({event, variant="basic", wishlist, addToWishlist}) {
 
     // Funksjonen gjør lenken i interaktive kort URL-vennlig
     const slugify = (string) => {
@@ -13,6 +13,14 @@ export default function EventCard({event, variant="basic"}) {
             .replace(/[^\w\-]+/g, '') // Fjerner alt som ikke er bokstaver
     };
 
+    /* 
+        - En variabel sjekker om et event ligger i state (wishlist)
+        - State-en "wishlist" er sendt videre som prop fra CategoryPage -> EventCards -> EventCard
+        - Variabelen gjør det lett å endre stil på knappen som trykkes (inWishlist ? "className" : "")
+            - Se kort nummer 4 - "Kategori-kort" under
+    */
+    const inWishlist = wishlist.some(item => item.id === event.id);
+
     return (
         /* 
             Henter ut relevant arrangement-informasjon med utgangspunkt i hvilket type kort
@@ -20,7 +28,7 @@ export default function EventCard({event, variant="basic"}) {
         */
         <article className="event-card">
             {/* 
-                Interaktive kort
+                1 Interaktive kort
                 - Bruk: variant="interactive"
                 - Eksempel: Featured events / festivaler i Home
             */}
@@ -33,7 +41,7 @@ export default function EventCard({event, variant="basic"}) {
             )}
 
             {/* 
-                Standard kort
+                2 Standard kort
                 - Krever ingen prop
                 - Eksempel: City events i Home
             */}
@@ -54,7 +62,7 @@ export default function EventCard({event, variant="basic"}) {
             )}
 
             {/* 
-                Festivalpass-kort
+                3 Festivalpass-kort
                 - Bruk: variant="festival-pass"
                 - Eksempel: Festivalpass i EventPage
             */}
@@ -75,7 +83,7 @@ export default function EventCard({event, variant="basic"}) {
             )}
 
             {/*
-                Kategori-kort (med interaktiv knapp)
+                4 Kategori-kort (med interaktiv knapp)
                 - Bruk: variant="category"
                 - Eksempel: kategori-kort i CategoryPage
             */}
@@ -83,8 +91,11 @@ export default function EventCard({event, variant="basic"}) {
                 <div className="event-card-container">
                     <div className="image-wrapper">
                         <img src={event?.images[0]?.url} alt="event-image" />
-                        <button className="event-button-favorite">
-                            <span className="material-symbols-outlined favorite-icon">favorite</span>
+                        <button className={`event-button-favorite ${inWishlist ? "saved" : ""} `}
+                        onClick={() => addToWishlist(event)}>
+                            <span className="material-symbols-outlined favorite-icon">
+                                {inWishlist ? "heart_check" : "favorite"}
+                            </span>
                         </button>
                     </div>
                     <div className="event-card-details">
