@@ -43,13 +43,17 @@ export default function CategoryPage() {
                 : [...prev, event]
         );
 
-        console.log("Event i liste?:", exist)
+        //console.log("Event i liste?:", exist)
     }
 
     useEffect(() => {
             // Benytter "featuredEventsIds" som parameter
             getEvents()
         }, [slug]);
+
+    /*useEffect(() => {
+        console.log("Event i liste?:", wishlist)
+    }, [wishlist])*/
 
     // Eventuelle endringer i "hero-section": skifte farge eller bilde?
     const backgroundImages = {
@@ -97,6 +101,12 @@ export default function CategoryPage() {
             <section className="events-section">
                 <Heading variant="h2">Spillesteder</Heading>
 
+                <EventCards 
+                    events={venues} 
+                    variant="venue"
+                    wishlist={wishlist}
+                    addToWishlist={handleClick}
+                />
             </section>
         </>
     )

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import "../styles/eventCard.scss";
 
-// Som standard benyttes "basic" - om ikke annet er spesifisert
+// Som standard benyttes "basic", tom liste "[]" og tom funksjon - om ikke annet er spesifisert
 export default function EventCard({event, variant="basic", wishlist = [], addToWishlist = () => {}}) {
 
     // Funksjonen gjør lenken i interaktive kort URL-vennlig
@@ -82,8 +82,9 @@ export default function EventCard({event, variant="basic", wishlist = [], addToW
                 </div>
             )}
 
+            {/* 4 OG 5 BENYTTES KUN I CATEGORY PAGE */}
             {/*
-                4 Kategori-kort (med interaktiv knapp)
+                4 Kategori-kort (med ønskeliste-knapp)
                 - Bruk: variant="category"
                 - Eksempel: kategori-kort i CategoryPage
             */}
@@ -111,6 +112,31 @@ export default function EventCard({event, variant="basic", wishlist = [], addToW
                         </ul>
                     </div>
                 </div>
+            )}
+
+            {/*
+                5 Spillested-kort (med ønskeliste-knapp)
+                - Bruk: variant="venue"
+                - Eksempel: spillested-kort (venues) i CategoryPage
+            */}
+            {variant === "venue" && (
+                <div className="event-card-container">
+                <div className="image-wrapper">
+                    <button className={`event-button-favorite ${inWishlist ? "saved" : ""} `}
+                    onClick={() => addToWishlist(event)}>
+                        <span className="material-symbols-outlined favorite-icon">
+                            {inWishlist ? "heart_check" : "favorite"}
+                        </span>
+                    </button>
+                </div>
+                <div className="event-card-details">
+                    <h3>{event?.name}</h3>
+                    <ul className="event-card-info">
+                        <li>{event?.country?.name}</li>
+                        <li>{event?.city?.name}</li>
+                    </ul>
+                </div>
+            </div>
             )}
         </article>
         
