@@ -9,6 +9,11 @@ export default {
             type: "string",
         },
         {
+            name: "image",
+            title: "User Photo",
+            type: "image",
+        },
+        {
             name: "gender",
             title: "Gender",
             type: "array",
@@ -41,6 +46,7 @@ export default {
             name: "age",
             title: "Age",
             type: "number",
+            validation: Rule => Rule.min(2).error("Minimun age is 2"),
         },
         {
             name: "previous_purchases",
