@@ -29,7 +29,7 @@ export default function EventCard({event, variant="basic", wishlist = [], addToW
             - "Dersom {dette} ikke eksisterer, vis {dette}"
     */
     const eventName = event?.name || "";
-    const image = event?.images?.[0]?.url || "";
+    const image = event?.images?.[0]?.url || null;
     const genre = event?.classifications?.[0]?.genre?.name || "";
     const date = new Date(event?.dates?.start?.localDate).toLocaleDateString("no-NO") || "";
     const venue = event?._embedded?.venues?.[0];
