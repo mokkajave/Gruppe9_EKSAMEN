@@ -94,32 +94,28 @@ export default function CategoryPage() {
                 {/* Filtreringsform */}
                 <Heading variant="h1">Filtrert søk</Heading>
                 <form className="filter-form content-container">
-                    <label>
-                        Dato:
+                    <div className="filter-form-details">
+                        <label>Dato:</label>
                         <input 
                             type="date"
                         />
-                    </label>
 
-                    <label>
-                        Land: 
+                        <label htmlFor="country">Land:</label>
                         <select>
                             <option value="">Velg et land</option>
                             {countries?.map(country => (
                                 <option key={country} value={country}>{country}</option>
                             ))}
                         </select>
-                    </label>
-
-                    <label>
-                        By:
+                    
+                        <label htmlFor="city">By:</label>
                         <select>
                             <option value="">Velg en by</option>
                             {cities?.map(city => (
                                 <option key={city} value={city}>{city}</option>
                             ))}
                         </select>
-                    </label>
+                    </div>
 
                     <button type="submit">Filtrer</button>
                 </form>
@@ -127,15 +123,17 @@ export default function CategoryPage() {
                 {/* Søkeform */}
                 <Heading variant="h2">Søk</Heading>
                 <form className="search-form content-container" onSubmit={handleSearch}>
-                    <label htmlFor="search">Søk etter arrangement, attraksjon eller spillested: </label>
-                    <input 
-                        type="search" 
-                        id="search"
-                        value={search}
-                        onChange={handleChange}
-                        placeholder="Skriv søkeord..."
-                    />
-                    <button type="submit">Søk</button>
+                    <label htmlFor="search">Søk etter arrangement, attraksjon eller spillested!</label>
+                    <div className="search-form-details">
+                        <input 
+                            type="search" 
+                            id="search"
+                            value={search}
+                            onChange={handleChange}
+                            placeholder="Skriv søkeord..."
+                        />
+                        <button type="submit">Søk</button>
+                    </div>
                 </form>
 
             </section>
