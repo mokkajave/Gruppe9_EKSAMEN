@@ -1,3 +1,41 @@
 .search-section {
     padding: 0 0 2rem 0;
+
+    .search-form, .filter-form {
+        padding: 0 1rem 0 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        input, select {
+            padding: .5rem;
+        }
+    }
+
+    .filter-form {
+        label {
+            input, select {
+                margin-left: .5rem;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .search-section {
+        .search-form, .filter-form {
+            padding: 0 1.5rem 0 1.5rem;
+            flex-direction: row;
+        }
+
+        
+    }
+}
+
+@media (min-width: 1024px) {
+    .search-section {
+        .search-form, .filter-form {
+            padding: 0 2rem 0 2rem;
+        }
+    }
 }
