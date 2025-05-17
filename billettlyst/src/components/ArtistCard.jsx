@@ -1,5 +1,6 @@
 import "../styles/artistCard.scss";
 
+
 export default function ArtistCard({artist}) {
     return (
         <article className="artist-card">

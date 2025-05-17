@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-
 import EventCards from "../components/EventCards";
-
 import "../styles/home.scss";
 import Heading from "../components/Heading";
 import CityButtons from "../components/CityButtons";
+
 
 export default function Home() {
     // useState-hook som tar imot og holder på utvalgte arrangement(er)

@@ -1,16 +1,14 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-
 import Heading from "../components/Heading";
 import EventCards from "../components/EventCards";
-
 import "../styles/categoryPage.scss";
+
 
 export default function CategoryPage() {
     const {slug} = useParams()
-
+    
     const [search, setSearch] = useState("");
-
     const [attractions, setAttractions] = useState([]);
     const [events, setEvents] = useState([]);
     const [venues, setVenues] = useState([]);

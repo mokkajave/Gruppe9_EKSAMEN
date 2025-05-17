@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-
 import "../styles/eventCard.scss";
+
 
 // Som standard benyttes "basic", tom liste "[]" og tom funksjon - om ikke annet er spesifisert
 export default function EventCard({event, variant="basic", wishlist = [], addToWishlist = () => {}}) {

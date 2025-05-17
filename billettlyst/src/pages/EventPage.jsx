@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
 import "../styles/eventPage.scss";
 import EventCards from "../components/EventCards";
 import EventCard from "../components/EventCard";
 import Heading from "../components/Heading";
 import ArtistCard from "../components/ArtistCard";
+
 
 export default function EventPage() {
     const {slug} = useParams();

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/login.scss"
 
+
 export default function Login({}) {
   const [userLogin, setUserLogin] = useState(false);
   const [inputData, setInputData] = useState({});
@@ -36,6 +37,7 @@ export default function Login({}) {
     setUserLogin(true);
     navigate("/dashboard");
   };
+
 
   return (
     <section className="log-in-form">

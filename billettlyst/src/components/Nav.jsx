@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
-
 import "../styles/nav.scss";
+
 
 export default function Nav() {
     //useLocation brukes til å hente den nåværende slugen og pathname brukes for å sjekke om denne er "/dashboard". 

@@ -1,6 +1,6 @@
 import EventCard from "./EventCard";
-
 import "../styles/eventCards.scss";
+
 
 export default function EventCards({events, variant, wishlist, addToWishlist}) {
     return (
