@@ -12,7 +12,7 @@ export default function Layout({children}) {
                 {children}
             </main>
             <footer>
-                <p>Website &copy; 2025 </p>
+                <p>Website &copy; 2025 Innhold levert av: <a href="https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/">Ticketmaster API</a></p>
             </footer>
         </>
     )
