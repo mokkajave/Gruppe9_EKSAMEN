@@ -3,38 +3,24 @@ import { useNavigate } from "react-router-dom";
 import "../styles/login.scss"
 
 
-export default function Login({}) {
-  const [userLogin, setUserLogin] = useState(false);
+export default function Login() {
   const [inputData, setInputData] = useState({});
   const [error, setError] = useState();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    
-    setInputData((prev) => {
-      const updatedInputData = { ...prev, [name]: value };
-
-      const { username, password } = updatedInputData;
-      const inputFilled = !!username && !!password;
-      setUserLogin(inputFilled);
-
-      return updatedInputData;
-    });
+    setInputData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleClick = (e) => {
     e.preventDefault();
-
     const { username, password } = inputData;
     if (!username || !password) {
       setError("Fyll alle felt!");
-      setUserLogin(false);
       return;
     }
-
     setError("");
-    setUserLogin(true);
     navigate("/dashboard");
   };
 
