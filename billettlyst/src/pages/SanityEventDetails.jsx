@@ -11,6 +11,7 @@ export default function SanityEventDetails() {
     const venueName = venue?.name;
     const country = venue?.country?.name;
     const city = venue?.city?.name;
+    const segment = eventDetails?.classifications?.[0]?.segment?.name || "";
     const date = new Date(eventDetails?.dates?.start?.localDate).toLocaleDateString("no-NO");
 
     const getFeaturedEvents = async() => {
@@ -19,7 +20,6 @@ export default function SanityEventDetails() {
             .then(data => setSanityEvent(data))
             .catch(error => console.error("Something went wrong fetching events:", error))
     };
-    console.log(sanityEvent)
 
     useEffect(() => {
         getFeaturedEvents();
@@ -31,6 +31,7 @@ export default function SanityEventDetails() {
                 <article>
                     <Heading variant="h2">{eventDetails?.name}</Heading>
                     <ul>
+                        <li>{segment}</li>
                         <li>{date}</li>
                         <li>{country}</li>
                         <li>{city}</li>

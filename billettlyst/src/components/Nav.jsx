@@ -35,7 +35,7 @@ export default function Nav() {
             </ul>
             
             {dashboardActive ? (
-                <Link to="/" className="nav-link nav-link-button">Logg ut</Link>
+                <Link to="/login" className="nav-link nav-link-button">Logg ut</Link>
             ) : (
                 <Link to="/login" className="nav-link nav-link-button">Logg inn</Link>
             )}
