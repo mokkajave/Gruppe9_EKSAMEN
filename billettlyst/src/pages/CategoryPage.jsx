@@ -29,6 +29,12 @@ export default function CategoryPage() {
         Frankrike: "FR",
         Spania: "ES"
     };
+
+    /*  
+        Siden API-et ikke forstår land som Norge, men landskoder som "NO" - 
+        henter vi ut landskodene lagret under hvert lands-navn over. Navnene er tenkt å skulle
+        velges av bruker i form, som så omgjøres til en countryCode - som så kan benyttes i fetching.
+    */
     const code = countries[selectedCountry]
 
     /*
