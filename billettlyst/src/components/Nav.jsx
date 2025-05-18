@@ -23,7 +23,7 @@ export default function Nav() {
     return (
         <nav className="content-container">
             <div className="logo-ham">
-                <span class="material-symbols-outlined ham-menu-button" onClick={toggleMenu}>menu</span>
+                <span className="material-symbols-outlined ham-menu-button" onClick={toggleMenu}>menu</span>
                 <Link to="/" id="logo">BillettLyst</Link>
             </div>
 
