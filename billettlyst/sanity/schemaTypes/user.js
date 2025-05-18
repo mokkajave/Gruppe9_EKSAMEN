@@ -9,6 +9,7 @@ export default {
             type: "string",
         },
         {
+            // Legger til bruker-bilde også, slik at dette kan fetches ut på Dashboard siden senere
             name: "image",
             title: "User Photo",
             type: "image",

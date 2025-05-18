@@ -14,6 +14,7 @@ export default {
             type: "string",
         },
         {
+            // Lagt til ekstrafunksjon; kategori. Her kan hvert enkelt event øremerkes til gjeldende kategorier
             name: "category",
             title: "Category",
             type: "string",
@@ -32,7 +33,7 @@ export default {
                         value: "festival"
                     },
                 ],
-                
+
                 layout: "radio",
             }
         }
