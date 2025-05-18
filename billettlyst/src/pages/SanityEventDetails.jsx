@@ -3,9 +3,12 @@ import { useParams } from "react-router-dom";
 import Heading from "../components/Heading";
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 export default function SanityEventDetails( { sanityUsers } ) {
 =======
+=======
+>>>>>>> Stashed changes
 import "../styles/sanityEventDetails.scss";
 
 export default function SanityEventDetails() {
@@ -34,6 +37,7 @@ export default function SanityEventDetails() {
     
     return(
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             <>
             <section>
                 <img src={eventDetails?.images[0]?.url}/>
@@ -48,6 +52,8 @@ export default function SanityEventDetails() {
                     </ul>
                 </article>
 =======
+=======
+>>>>>>> Stashed changes
             <section className="sanity-event-details-section content-container grid">
                     <img src={eventDetails?.images[0]?.url}/>
                     <article>
@@ -60,6 +66,9 @@ export default function SanityEventDetails() {
                             <li>Sted: {venueName}</li>
                         </ul>
                     </article>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             </section>
             <section>
