@@ -2,7 +2,14 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Heading from "../components/Heading";
 
+<<<<<<< Updated upstream
+
 export default function SanityEventDetails( { sanityUsers } ) {
+=======
+import "../styles/sanityEventDetails.scss";
+
+export default function SanityEventDetails() {
+>>>>>>> Stashed changes
     const { id } = useParams();
     const [sanityEvent, setSanityEvent] = useState();
 
@@ -26,6 +33,7 @@ export default function SanityEventDetails( { sanityUsers } ) {
     }, []);
     
     return(
+<<<<<<< Updated upstream
             <>
             <section>
                 <img src={eventDetails?.images[0]?.url}/>
@@ -39,6 +47,20 @@ export default function SanityEventDetails( { sanityUsers } ) {
                         <li>{venueName}</li>
                     </ul>
                 </article>
+=======
+            <section className="sanity-event-details-section content-container grid">
+                    <img src={eventDetails?.images[0]?.url}/>
+                    <article>
+                        <Heading variant="h1">{eventDetails?.name}</Heading>
+                        <ul>
+                            <li>Sjanger: {segment}</li>
+                            <li>Dato: {date}</li>
+                            <li>Land: {country}</li>
+                            <li>By: {city}</li>
+                            <li>Sted: {venueName}</li>
+                        </ul>
+                    </article>
+>>>>>>> Stashed changes
             </section>
             <section>
                 <h1>Brukere som har tidligere kjøpt dette eller har dette på ønskelisten</h1>
