@@ -19,7 +19,7 @@ export default function Nav() {
                 <li><Link to="/category/theater" className="nav-link">Teater</Link></li>
             </ul>
             {dashboardActive ? (
-                <Link to="/dashboard" className="nav-link nav-link-button">Logg ut</Link>
+                <Link to="/" className="nav-link nav-link-button">Logg ut</Link>
             ) : (
                 <Link to="/login" className="nav-link nav-link-button">Logg inn</Link>
             )}
