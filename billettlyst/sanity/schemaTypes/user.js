@@ -46,9 +46,15 @@ export default {
             name: "age",
             title: "Age",
             type: "number",
+            /*
+            Setter bruker min. alder til 2 år, da det er vanlig policy for billettutsalg orginisasjoner. 
+            For å implementere et regelsett på min. alder i Sanity, fikk jeg inspirasjon fra dette nettstedet:
+            https://www.knutmelvaer.no/blog/2020/04/a-practical-application-of-the-web-project-book/
+            */
             validation: Rule => Rule.min(2).error("Minimun age is 2"),
         },
         {
+            // I Sanity kan man nå lage liste på tidligere kjøp, og har direkte referanse til event lagret i Sanity
             name: "previous_purchases",
             title: "Previous Purchases",
             type: "array",
@@ -64,6 +70,7 @@ export default {
             ]
         },
         {
+            // Fungerer på samme måte som tidligere kjøp, kan legge til event i ønskelisten
             name: "wishlist",
             title: "Wishlist",
             type: "array",
