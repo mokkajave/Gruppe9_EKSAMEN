@@ -115,7 +115,7 @@ export default function CategoryPage() {
 
                 {/* Filtreringsform */}
                 <Heading variant="h1">Filtrert søk</Heading>
-                <form className="filter-form content-container">
+                <form className="filter-form content-container" onSubmit={handleSubmit}>
                     <div className="filter-form-details">
                         <label>Dato:</label>
                         <input 
@@ -139,8 +139,7 @@ export default function CategoryPage() {
                             ))}
                         </select>
                     </div>
-
-                    <button type="submit">Filtrer</button>
+                    <button>Filtrer</button>
                 </form>
                 
                 {/* Søkeform */}
@@ -155,7 +154,6 @@ export default function CategoryPage() {
                             onChange={handleChange}
                             placeholder="Skriv søkeord..."
                         />
-                        {/* En knapp inne i form, med type="submit" vil automatisk trigge onSubmit */}
                         <button onClick={handleSearch}>Søk</button>
                     </div>
                 </form>

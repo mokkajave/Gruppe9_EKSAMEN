@@ -66,11 +66,10 @@ export default function EventPage() {
                     </ul>
                 </article>
 
-                <Heading variant="h2">Følg oss på sosiale medier</Heading>
-
-                <ul className="event-socials">
-                    
-                </ul>
+                <Heading variant="h2">Promotert av</Heading>
+                <article className="content-container">
+                    {event?._embedded?.events[0]?.promoter?.name}
+                </article>
             </section>
 
             <section className="events-section">
