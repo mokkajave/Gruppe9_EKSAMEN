@@ -15,13 +15,21 @@ export default function CategoryPage() {
     const [wishlist, setWishlist] = useState([]);
 
     // Brukerens valgte dato, land og by i filtrering-form
-    const [selectedDate, setSelectedDate] = useState();
-    const [selectedCountry, setSelectedCountry] = useState();
-    const [selectedCity, setSelectedCity] = useState();
+    const [selectedDate, setSelectedDate] = useState("");
+    const [selectedCountry, setSelectedCountry] = useState("Norge");
+    const [selectedCity, setSelectedCity] = useState("");
 
     // Alternativer som benyttes i filtrering av innhold - på by og land
     const cities = ["Oslo", "Stockholm", "Berlin", "London", "Paris"]
-    const countries = ["Norway", "Sweden", "Germany", "France", "Spain"];
+
+    const countries = {
+        Norge: "NO",
+        Sverige: "SE",
+        Tyskland: "DE",
+        Frankrike: "FR",
+        Spania: "ES"
+    };
+    const code = countries[selectedCountry]
 
     /*
         - Funskjon som henter innhold fra Ticketmaster sin API på slug
@@ -49,6 +57,19 @@ export default function CategoryPage() {
     const handleSearch = async(e) => {
         // Eksempel: "keyword=findings+music"
         fetch(`https://app.ticketmaster.com/discovery/v2/suggest?keyword=${search}+${slug}&locale=*&apikey=nwV2iLAvNoKVuQiXYNyXE1lHAr9P850o`)
+            .then(response => response.json())
+            .then(data => {
+                setAttractions(data?._embedded?.attractions)
+                setEvents(data?._embedded?.events)
+                setVenues(data?._embedded?.venues)
+                setSearch("")
+            })
+            .catch(error => console.error("Something went wrong fetching search", error));
+    };
+
+    const handleFilter = async(e) => {
+        // Eksempel: "keyword=findings+music"
+        fetch(`https://app.ticketmaster.com/discovery/v2/events.json?keyword=${slug}&countryCode=${code}&startDateTime=${selectedDate}T00:00:00Z&city=${selectedCity}&apikey=nwV2iLAvNoKVuQiXYNyXE1lHAr9P850o`)
             .then(response => response.json())
             .then(data => {
                 setAttractions(data?._embedded?.attractions)
@@ -118,28 +139,28 @@ export default function CategoryPage() {
                 <form className="filter-form content-container" onSubmit={handleSubmit}>
                     <div className="filter-form-details">
                         <label>Dato:</label>
-                        <input 
-                            type="date"
-                            value={selectedDate}
+                        <input type="date" 
+                        value={selectedDate} 
+                        onChange={(e) => setSelectedDate(e.target.value)} 
                         />
 
                         <label htmlFor="country">Land:</label>
-                        <select>
-                            <option value={selectedCountry}>Velg et land</option>
-                            {countries?.map(country => (
-                                <option key={country} value={country}>{country}</option>
-                            ))}
+                        <select value={selectedCountry} onChange={(e) => setSelectedCountry(e.target.value)}>
+                            <option value="Norge">Norge</option>
+                            <option value="Sverige">Sverige</option>
+                            <option value="Tyskland">Tyskland</option>
+                            <option value="Frankrike">Frankrike</option>
+                            <option value="Spania">Spania</option>
                         </select>
                     
                         <label htmlFor="city">By:</label>
-                        <select>
-                            <option value={selectedCity}>Velg en by</option>
+                        <select value={selectedCity} onChange={(e) => setSelectedCity(e.target.value)}>
                             {cities?.map(city => (
                                 <option key={city} value={city}>{city}</option>
                             ))}
                         </select>
                     </div>
-                    <button>Filtrer</button>
+                    <button onClick={handleFilter}>Filtrer</button>
                 </form>
                 
                 {/* Søkeform */}
