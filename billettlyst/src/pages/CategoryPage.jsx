@@ -190,7 +190,7 @@ export default function CategoryPage() {
 
                 <EventCards 
                     events={venues} 
-                    variant="category"
+                    variant="venue"
                     wishlist={wishlist}
                     addToWishlist={handleAddToWishlist}
                 />

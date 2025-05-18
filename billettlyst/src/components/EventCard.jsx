@@ -106,7 +106,6 @@ export default function EventCard({event, variant="basic", wishlist = [], addToW
                 - Bruk: variant="category"
                 - Eksempel: kategori-kort i CategoryPage
             */}
-
             {variant === "category" && (
                 <div className="event-card-container">
                     <div className="image-wrapper">
@@ -124,6 +123,31 @@ export default function EventCard({event, variant="basic", wishlist = [], addToW
                         <ul className="event-card-info">
                             <li>{date}</li>
                             <li>{venueName}</li>
+                            <li>{country}</li>
+                            <li>{city}</li> 
+                        </ul>
+                    </div>
+                </div>
+            )}
+
+            {/*
+                Lagde et alterantiv til kortet over (kort 4)
+                - På grunn av error ved lasting av bilde
+                - Brukes på spillesteder (venues) i CategoryPage
+            */}
+            {variant === "venue" && (
+                <div className="event-card-container">
+                    <div className="image-wrapper">
+                        <button className={`event-button-favorite ${inWishlist ? "saved" : ""} `}
+                            onClick={() => addToWishlist(event)}>
+                            <span className="material-symbols-outlined favorite-icon">
+                                {inWishlist ? "heart_check" : "favorite"}
+                            </span>
+                        </button>
+                    </div>
+                    <div className="event-card-details">
+                        <h3>{event?.name}</h3>
+                        <ul className="event-card-info">
                             <li>{country}</li>
                             <li>{city}</li> 
                         </ul>
