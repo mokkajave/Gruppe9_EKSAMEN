@@ -35,7 +35,7 @@ export default function Dashboard() {
             <Heading variant="h1">Min Side</Heading>
 
             <Heading variant="h2">Attraksjoner</Heading>
-            <section className="sanity-events">
+            <section className="sanity-events grid">
                 {sanityEvents?.map((sanityEvent, index) => (
                     <article className="sanity-event-card" key={index}>
                         <h2>{sanityEvent?.title}</h2>
@@ -43,7 +43,7 @@ export default function Dashboard() {
             </section>
 
             <Heading variant="h2">Brukere</Heading>
-            <section className="sanity-users">
+            <section className="sanity-users grid">
                 {sanityUsers?.map((sanityUser, index) => (
                     <article className="sanity-user-card" key={index}>
                         <img src={sanityUser?.image?.asset?.url} alt="user-image"/>

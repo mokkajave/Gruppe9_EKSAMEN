@@ -12,10 +12,13 @@ export default function Nav() {
 
     const [menu, setMenu] = useState(false);
 
+    // Når element trykkes, skjer det motsatte av state (menu) - true <=> false
     const toggleMenu = () => {
         setMenu(!menu);
     };
 
+    // Setter state (menu) til false, for å lukke menyen ved hvert klikk. 
+    // Slipper at menyen blir værende på siden som et uromoment
     const handleLink = () => {
         setMenu(false);
     };
@@ -27,6 +30,7 @@ export default function Nav() {
                 <Link to="/" id="logo">BillettLyst</Link>
             </div>
 
+            {/* Meny som vises på desktop */}
             <ul>
                 <li><Link to="/" className="nav-link">Hjem</Link></li>
                 <li><Link to="/category/music" className="nav-link">Musikk</Link></li>
@@ -34,6 +38,7 @@ export default function Nav() {
                 <li><Link to="/category/theater" className="nav-link">Teater</Link></li>
             </ul>
 
+            {/* Meny som vises på mobil og tablet (Hamburgermeny) */}
             <ul className={`nav-links ${menu ? "open" : ""}`}>
                 <li><Link to="/" className="nav-link" onClick={handleLink}>Hjem</Link></li>
                 <li><Link to="/category/music" className="nav-link" onClick={handleLink}>Musikk</Link></li>
