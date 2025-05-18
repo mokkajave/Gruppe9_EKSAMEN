@@ -67,8 +67,11 @@ export default function CategoryPage() {
             .catch(error => console.error("Something went wrong fetching search", error));
     };
 
+    /*
+        - En funskjon som benytter sjanger (slug), landskode, dato og by for uthenting av innhold
+        - Skriver "T00:00:00" bak valgt dato i forsøk om å oppnå riktig format
+    */
     const handleFilter = async(e) => {
-        // Eksempel: "keyword=findings+music"
         fetch(`https://app.ticketmaster.com/discovery/v2/events.json?keyword=${slug}&countryCode=${code}&startDateTime=${selectedDate}T00:00:00Z&city=${selectedCity}&apikey=nwV2iLAvNoKVuQiXYNyXE1lHAr9P850o`)
             .then(response => response.json())
             .then(data => {
@@ -140,12 +143,14 @@ export default function CategoryPage() {
                     <div className="filter-form-details">
                         <label>Dato:</label>
                         <input type="date" 
-                        value={selectedDate} 
-                        onChange={(e) => setSelectedDate(e.target.value)} 
+                            value={selectedDate}
+                            onChange={(e) => setSelectedDate(e.target.value)} 
                         />
 
                         <label htmlFor="country">Land:</label>
-                        <select value={selectedCountry} onChange={(e) => setSelectedCountry(e.target.value)}>
+                        <select value={selectedCountry}
+                            onChange={(e) => setSelectedCountry(e.target.value)}>
+                            {/* Valgte å skrive manuelt over mapping */}
                             <option value="Norge">Norge</option>
                             <option value="Sverige">Sverige</option>
                             <option value="Tyskland">Tyskland</option>
@@ -154,7 +159,8 @@ export default function CategoryPage() {
                         </select>
                     
                         <label htmlFor="city">By:</label>
-                        <select value={selectedCity} onChange={(e) => setSelectedCity(e.target.value)}>
+                        <select value={selectedCity}
+                            onChange={(e) => setSelectedCity(e.target.value)}>
                             {cities?.map(city => (
                                 <option key={city} value={city}>{city}</option>
                             ))}

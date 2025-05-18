@@ -6,17 +6,22 @@ import "../styles/heading.scss";
 */
 export default function Heading({variant, children}) {
     /*
-        I tilfeller som dette, klarer ikke React å skille mellom variabler
-        og innebygde HTML-tagger. Derfor er variabelen nødt til å ha stor forbokstav.
-
-        Alternativt kunne vi benyttet switch/case for å endre utskrift basert på samme input,
-        men gruppen foretrekker det ryddig og presis.
+        Alternativt kunne vi benyttet switch/case for å endre utskrift basert på samme input.
     */
-    const Tag = variant;
     
     return (
         <div className="section-heading content-container">
-            <Tag>{children}</Tag> 
+            {variant === "h1" && (
+                <h1>{children}</h1>
+            )}
+            
+            {variant === "h2" && (
+                <h2>{children}</h2>
+            )}
+
+            {variant === "h3" && (
+                <h3>{children}</h3>
+            )}
         </div>
     )
 }
