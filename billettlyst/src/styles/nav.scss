@@ -18,6 +18,36 @@ nav {
         }
     }
 
+    .logo-ham {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+
+        .ham-menu-button {
+            border: none;
+            cursor: pointer;
+            font-size: 35px;
+        }
+
+        #logo {
+            font-family: 'Roboto', sans-serif;
+            font-size: 30px;
+            color: var(--black);
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+    }
+
+    .open {
+        display: flex;
+    }
+
+    .nav-links {
+        z-index: 1000;
+        flex-direction: column;
+        background-color: var(--white);
+    }
+
     .nav-link {
         display: flex;
         font-family: 'Roboto', sans-serif;
@@ -48,14 +78,6 @@ nav {
             color: var(--white);
         }
     }
-
-    #logo {
-        font-family: 'Roboto', sans-serif;
-        font-size: 30px;
-        color: var(--black);
-        font-weight: 700;
-        letter-spacing: -1px;
-    }
 }
 
 @media (min-width: 768px) {
@@ -69,6 +91,10 @@ nav {
         height: 100px;
         padding: 0 2rem;
 
+        .nav-links {
+            flex-direction: row;
+        }
+
         ul {
             display: flex;
         }
@@ -77,8 +103,14 @@ nav {
             padding: 8px 18px;
         }
 
-        #logo {
-            font-size: 40px;
+        .logo-ham {
+            #logo {
+                font-size: 40px;
+            }
+
+            .ham-menu-button {
+                display: none;
+            }
         }
     }
 }

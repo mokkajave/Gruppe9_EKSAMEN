@@ -132,7 +132,7 @@ export default function EventCard({event, variant="basic", wishlist = [], addToW
 
             {/*
                 Lagde et alterantiv til kortet over (kort 4)
-                - På grunn av error ved lasting av bilde
+                - På grunn av error ved lasting av bilde i spillesteder (kat. sport)
                 - Brukes på spillesteder (venues) i CategoryPage
             */}
             {variant === "venue" && (
