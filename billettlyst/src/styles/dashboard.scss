@@ -1,10 +1,9 @@
-.user-section {
+.sanity-section {
     padding: 0;
 }
 
 .sanity-users {
     display: flex;
-    flex-wrap: wrap;
     gap: 2rem;
 }
 
@@ -30,6 +29,10 @@
         padding-left: 1rem;
     }
 
+    li {
+        text-decoration: underline;
+    }
+
     h2 {
         text-align: center;
     }
@@ -37,14 +40,14 @@
 }
 .sanity-events{
     display: flex;
-    flex-wrap: wrap;
     gap: 1rem;
 
     .sanity-event-card{
-        border: 2px solid black;
         padding: 0.5rem;
         border-radius: 5px;
         grid-column: span 1;
+        background-color: var(--white);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             
         h2{
             text-align: center;
@@ -55,7 +58,7 @@
 @media (min-width: 768px) {
     .sanity-users, .sanity-events {
         .sanity-user-card, .sanity-event-card {
-            grid-column: span 4;
+            grid-column: span 6;
         }
     }
 }
