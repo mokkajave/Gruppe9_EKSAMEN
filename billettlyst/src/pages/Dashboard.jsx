@@ -1,34 +1,9 @@
-import { useEffect, useState } from "react";
 import Heading from "../components/Heading";
-import { fetchAllSanityEvents, fetchAllSanityUsers } from "../sanityComponents/fetches";
 import "../styles/dashboard.scss";
-import EventCards from "../components/EventCards";
-import EventCard from "../components/EventCard";
 import { Link } from "react-router-dom";
 
 
-export default function Dashboard() {
-    const [sanityUsers, setSanityUsers] = useState([]);
-    const [sanityEvents, setSanityEvents] = useState([]);
-    const [featuredEvents, setFeaturedEvents] = useState([]);
-  
-    const getAllSanityUsers = async () => {
-        const data = await fetchAllSanityUsers();
-        setSanityUsers(data);
-    };
-
-    const getAllSanityEvents = async () => {
-        const data = await fetchAllSanityEvents();
-        setSanityEvents(data);
-    };
-      
-    useEffect(() => {
-        getAllSanityUsers();
-    }, []);
-
-    useEffect(() => {
-        getAllSanityEvents();
-    }, []);
+export default function Dashboard( { sanityEvents, sanityUsers } ) {
 
     return (
         <section className="user-section">

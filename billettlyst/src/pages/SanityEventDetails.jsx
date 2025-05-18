@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Heading from "../components/Heading";
 
-export default function SanityEventDetails() {
+export default function SanityEventDetails( { sanityUsers } ) {
     const { id } = useParams();
     const [sanityEvent, setSanityEvent] = useState();
 
@@ -24,8 +24,9 @@ export default function SanityEventDetails() {
     useEffect(() => {
         getFeaturedEvents();
     }, []);
-
+    
     return(
+            <>
             <section>
                 <img src={eventDetails?.images[0]?.url}/>
                 <article>
@@ -39,5 +40,17 @@ export default function SanityEventDetails() {
                     </ul>
                 </article>
             </section>
+            <section>
+                <h1>Brukere som har tidligere kjøpt dette eller har dette på ønskelisten</h1>
+                {sanityUsers?.map(user => (
+                    (user.previous_purchases.some(purchased => purchased.apiid === id) || 
+                    user.wishlist.some(wished => wished.apiid === id)) && (
+                    <article key={user._id}>
+                        <img src={user.image?.asset?.url} alt={`${user.name} Profilbilde`} />
+                        <Heading variant="h2">{user.name}</Heading>
+                    </article>
+                )))}
+            </section>
+            </>
     );
 }
