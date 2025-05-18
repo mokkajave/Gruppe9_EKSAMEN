@@ -1,22 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Heading from "../components/Heading";
-
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-
-export default function SanityEventDetails( { sanityUsers } ) {
-=======
-=======
->>>>>>> Stashed changes
 import "../styles/sanityEventDetails.scss";
 
-export default function SanityEventDetails() {
->>>>>>> Stashed changes
+export default function SanityEventDetails({ sanityUsers }) {
     const { id } = useParams();
     const [sanityEvent, setSanityEvent] = useState();
 
-    const eventDetails = sanityEvent?._embedded?.events[0]
+    const eventDetails = sanityEvent?._embedded?.events[0];
     const venue = eventDetails?._embedded?.venues?.[0];
     const venueName = venue?.name;
     const country = venue?.country?.name;
@@ -24,64 +15,46 @@ export default function SanityEventDetails() {
     const segment = eventDetails?.classifications?.[0]?.segment?.name || "";
     const date = new Date(eventDetails?.dates?.start?.localDate).toLocaleDateString("no-NO");
 
-    const getFeaturedEvents = async() => {
+    const getFeaturedEvents = async () => {
         fetch(`https://app.ticketmaster.com/discovery/v2/events.json?id=${id}&locale=NO&apikey=nwV2iLAvNoKVuQiXYNyXE1lHAr9P850o`)
             .then(response => response.json())
             .then(data => setSanityEvent(data))
-            .catch(error => console.error("Something went wrong fetching events:", error))
+            .catch(error => console.error("Something went wrong fetching events:", error));
     };
 
     useEffect(() => {
         getFeaturedEvents();
     }, []);
-    
-    return(
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-            <>
-            <section>
-                <img src={eventDetails?.images[0]?.url}/>
+
+    return (
+        <>
+            <section className="sanity-event-details-section content-container grid">
+                <img src={eventDetails?.images?.[0]?.url} alt={eventDetails?.name} />
                 <article>
-                    <Heading variant="h2">{eventDetails?.name}</Heading>
+                    <Heading variant="h1">{eventDetails?.name}</Heading>
                     <ul>
-                        <li>{segment}</li>
-                        <li>{date}</li>
-                        <li>{country}</li>
-                        <li>{city}</li>
-                        <li>{venueName}</li>
+                        <li>Sjanger: {segment}</li>
+                        <li>Dato: {date}</li>
+                        <li>Land: {country}</li>
+                        <li>By: {city}</li>
+                        <li>Sted: {venueName}</li>
                     </ul>
                 </article>
-=======
-=======
->>>>>>> Stashed changes
-            <section className="sanity-event-details-section content-container grid">
-                    <img src={eventDetails?.images[0]?.url}/>
-                    <article>
-                        <Heading variant="h1">{eventDetails?.name}</Heading>
-                        <ul>
-                            <li>Sjanger: {segment}</li>
-                            <li>Dato: {date}</li>
-                            <li>Land: {country}</li>
-                            <li>By: {city}</li>
-                            <li>Sted: {venueName}</li>
-                        </ul>
-                    </article>
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
             </section>
             <section>
                 <h1>Brukere som har tidligere kjøpt dette eller har dette på ønskelisten</h1>
-                {sanityUsers?.map(user => (
-                    (user.previous_purchases.some(purchased => purchased.apiid === id) || 
-                    user.wishlist.some(wished => wished.apiid === id)) && (
-                    <article key={user._id}>
-                        <img src={user.image?.asset?.url} alt={`${user.name} Profilbilde`} />
-                        <Heading variant="h2">{user.name}</Heading>
-                    </article>
-                )))}
+                {sanityUsers
+                    ?.filter(user =>
+                        (user.previous_purchases?.some(p => p.apiid === id) ||
+                         user.wishlist?.some(w => w.apiid === id))
+                    )
+                    .map(user => (
+                        <article key={user._id}>
+                            <img src={user.image?.asset?.url} alt={`${user.name} Profilbilde`} />
+                            <Heading variant="h2">{user.name}</Heading>
+                        </article>
+                    ))}
             </section>
-            </>
+        </>
     );
 }
