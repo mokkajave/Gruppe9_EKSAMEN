@@ -22,6 +22,7 @@ nav {
         display: flex;
         align-items: center;
         gap: .5rem;
+        z-index: 1000;
 
         .ham-menu-button {
             border: none;
@@ -43,9 +44,14 @@ nav {
     }
 
     .nav-links {
-        z-index: 1000;
         flex-direction: column;
         background-color: var(--white);
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: auto;
+        padding-top: 60px;
     }
 
     .nav-link {
@@ -93,6 +99,11 @@ nav {
 
         .nav-links {
             flex-direction: row;
+            position: relative;
+            padding-top: 0;
+            width: auto;
+            height: 100%;
+            display: none;
         }
 
         ul {

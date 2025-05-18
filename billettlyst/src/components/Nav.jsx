@@ -27,6 +27,13 @@ export default function Nav() {
                 <Link to="/" id="logo">BillettLyst</Link>
             </div>
 
+            <ul>
+                <li><Link to="/" className="nav-link">Hjem</Link></li>
+                <li><Link to="/category/music" className="nav-link">Musikk</Link></li>
+                <li><Link to="/category/sport" className="nav-link">Sport</Link></li>
+                <li><Link to="/category/theater" className="nav-link">Teater</Link></li>
+            </ul>
+
             <ul className={`nav-links ${menu ? "open" : ""}`}>
                 <li><Link to="/" className="nav-link" onClick={handleLink}>Hjem</Link></li>
                 <li><Link to="/category/music" className="nav-link" onClick={handleLink}>Musikk</Link></li>
