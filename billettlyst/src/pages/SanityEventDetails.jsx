@@ -41,7 +41,7 @@ export default function SanityEventDetails({ sanityUsers }) {
                     </ul>
                 </article>
             </section>
-            <section>
+            <section className="sanity-user-details-section content-container">
                 <h1>Brukere som har tidligere kjøpt dette eller har dette på ønskelisten</h1>
                 {sanityUsers
                     ?.filter(user =>
@@ -49,9 +49,9 @@ export default function SanityEventDetails({ sanityUsers }) {
                          user.wishlist?.some(w => w.apiid === id))
                     )
                     .map(user => (
-                        <article key={user._id}>
+                        <article key={user._id} className="sanity-user-details">
                             <img src={user.image?.asset?.url} alt={`${user.name} Profilbilde`} />
-                            <Heading variant="h2">{user.name}</Heading>
+                            <h2>{user.name}</h2>
                         </article>
                     ))}
             </section>

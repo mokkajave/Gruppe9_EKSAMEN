@@ -8,7 +8,9 @@ export default function Nav() {
     //Om den er dette vil en ternary operator styre hvilken knapp som vises. 
     //KILDER useLocation:https://reactrouter.com/api/hooks/useLocation , pathname:https://www.w3schools.com/Jsref/prop_loc_pathname.asp
     const location = useLocation();
-    const dashboardActive = location.pathname === "/dashboard";
+    const dashboardActive = location.pathname === "/dashboard" || location.pathname.includes("/sanity-event");
+
+
 
     const [menu, setMenu] = useState(false);
 

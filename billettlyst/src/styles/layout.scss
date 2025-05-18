@@ -17,6 +17,10 @@ footer {
     height: 60px;
     background-color: var(--white);
     border-top: 1px solid var(--light-gray);
+
+    a{
+        text-decoration: underline;
+    }
 }
 
 @media (min-width: 1024px) {
