@@ -14,7 +14,7 @@ export default function EventCard({event, variant="basic", wishlist = [], addToW
     };
 
     /* 
-        - En variabel sjekker om et event ligger i state (wishlist)
+        - En variabel som sjekker om et event ligger i state (wishlist)
         - State-en "wishlist" er sendt videre som prop fra CategoryPage -> EventCards -> EventCard
         - Variabelen gjør det lett å endre stil på knappen som trykkes (inWishlist ? "className" : "")
             - Se kort nummer 4 - "Kategori-kort" under
@@ -31,7 +31,10 @@ export default function EventCard({event, variant="basic", wishlist = [], addToW
     const eventName = event?.name || "";
     const image = event?.images?.[0]?.url || null;
     const genre = event?.classifications?.[0]?.genre?.name || "";
-    const date = new Date(event?.dates?.start?.localDate).toLocaleDateString("no-NO") || "";
+    // Tradisjonell sjekk - dato viser seg som undefinert
+    const date = event?.dates?.start?.localDate ? 
+        new Date(event?.dates?.start?.localDate).toLocaleDateString("no-NO") 
+        : "";
     const venue = event?._embedded?.venues?.[0];
     const venueName = venue?.name || "";
     const country = venue?.country?.name || event?.country?.name; // event || venue

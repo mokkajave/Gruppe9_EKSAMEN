@@ -9,6 +9,7 @@ import EventCard from "../components/EventCard";
 export default function Dashboard() {
     const [sanityUsers, setSanityUsers] = useState([]);
     const [sanityEvents, setSanityEvents] = useState([]);
+    const [featuredEvents, setFeaturedEvents] = useState([]);
   
     const getAllSanityUsers = async () => {
         const data = await fetchAllSanityUsers();
