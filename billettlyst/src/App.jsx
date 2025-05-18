@@ -6,6 +6,7 @@ import CategoryPage from './pages/CategoryPage'
 import Dashboard from './pages/Dashboard'
 import Login from './pages/Login'
 import './styles/global.scss'
+import SanityEventDetails from './pages/SanityEventDetails'
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/category/:slug" element={<CategoryPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/sanity-event/:id" element={<SanityEventDetails />}></Route>
         </Routes>
       </Layout>
     </>

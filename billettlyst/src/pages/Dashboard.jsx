@@ -4,6 +4,7 @@ import { fetchAllSanityEvents, fetchAllSanityUsers } from "../sanityComponents/f
 import "../styles/dashboard.scss";
 import EventCards from "../components/EventCards";
 import EventCard from "../components/EventCard";
+import { Link } from "react-router-dom";
 
 
 export default function Dashboard() {
@@ -49,14 +50,14 @@ export default function Dashboard() {
                         <h2>{sanityUser?.name}</h2>
                         <h3>Ønskeliste</h3>
                         <ul>
-                            {sanityUser?.wishlist?.map(event => (
-                                <li key={event._id}>{event.title}</li>
+                            {sanityUser?.previous_purchases?.map((event, index) => (
+                                <li key={index}><Link to={`/sanity-event/${event.apiid}`}>{event.title}</Link></li>
                             ))}
                         </ul>
                         <h3>Tidligere kjøp</h3>
                         <ul>
-                            {sanityUser?.previous_purchases?.map(event => (
-                                <li key={event._id}>{event.title}</li>
+                            {sanityUser?.previous_purchases?.map((event, index) => (
+                                <li key={index}><Link to={`/sanity-event/${event.apiid}`}>{event.title}</Link></li>
                             ))}
                         </ul>
                     </article>))}
