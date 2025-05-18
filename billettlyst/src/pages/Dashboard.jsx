@@ -50,7 +50,7 @@ export default function Dashboard() {
                         <h2>{sanityUser?.name}</h2>
                         <h3>Ønskeliste</h3>
                         <ul>
-                            {sanityUser?.previous_purchases?.map((event, index) => (
+                            {sanityUser?.wishlist?.map((event, index) => (
                                 <li key={index}><Link to={`/sanity-event/${event.apiid}`}>{event.title}</Link></li>
                             ))}
                         </ul>
